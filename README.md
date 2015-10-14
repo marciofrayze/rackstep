@@ -5,7 +5,7 @@ RackStep is (yet another) micro ruby framework for web development.
 Main goals are:
 - be dead simple.
 - keep the source small.
-- implement only the necessary; No overcomplication.
+- implement only the necessary; no overcomplication.
 
 If you like ruby frameworks like Sinatra, you may like RackStep.
 
