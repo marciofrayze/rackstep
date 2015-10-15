@@ -8,7 +8,7 @@ class AppRouter < RackStep::Router
     # Must call super first, to initialize all the necessary attributes.
     super
 
-    # Adding route for main page
+    # Adding route for main page.
     add_route('GET', '', 'Main', 'index')
   end
 
