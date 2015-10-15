@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby "2.2.1"
 
+gem 'rake' 	# Used for unit testing execution.
+
 # All this gems are optional, but highly recommended.
 gem 'unicorn'   # Fast rack-compatible server that can be used for production.
 gem 'sanitize'  # Very good and simple lib to sanitize any parameters passed from the user, to avoid sql injection, etc.
