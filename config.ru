@@ -1,3 +1,7 @@
+# This file is used by any rack-compatible server and give instructions on how
+# to start the server and load the application.
+
+# Loading RackStep
 require './rackstep/rackstep'
 
 # Configuring Rack to serve static files (html, javascripts, images, etc).
@@ -12,5 +16,5 @@ use Rack::Static,
 # TODO: Check if image requests are also being compressed and avoid it.
 use Rack::Deflater
 
-# Creates a new instance of the Dispatcher class for each request.
+# Creates a new instance of the RackStep Dispatcher class for each request.
 run RackStep::Dispatcher

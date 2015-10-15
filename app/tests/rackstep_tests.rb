@@ -1,4 +1,7 @@
-# A simple unit test example
+# A simple unit test example.
+
+# TODO: Move the requires, simplecov init, etc to another place to allow
+# multiple test files to be executed.
 
 # This environment variable may be used in your app to detect what is the
 # current context of the application. In this exaple, this is irrevelant, but

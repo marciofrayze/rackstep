@@ -3,6 +3,9 @@ require_relative 'controller'
 require_relative 'router'
 require_relative '../app/approuter'
 require_relative '../app/main'
+# Loading all the app controllers
+# TODO: Find a better way to load this files
+Dir[File.dirname(__FILE__) + '/../app/controllers/*.rb'].each { |file| require file }
 
 module RackStep
 
@@ -11,10 +14,8 @@ module RackStep
     # We will store the request and create a router in this class initializer.
     attr_reader :request, :router
 
-    # Static method called from config.ru ("run Router") that initialize a new
-    # Router instance. It's important to do this way (instead of "run Rounter.new")
-    # to avoid having conflicts in instance variables from different requests.
-    # This way, every request have it's own instance of the RackStep class.
+    # Static method called from config.ru ("run RackStep::Dispatcher") that
+    # initialize a new instance of this class.
     def self.call(env)
       new(env).process_request
     end

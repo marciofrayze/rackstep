@@ -1,8 +1,7 @@
-# This file will be required as soon as the Rack Step is loaded. You may here
-# include everything you need for your app.
+# DO NOT CHANGE the name of this file.
+# It will be required as soon as the RackStep is loaded. You may here include
+# everything you need for your app, such as databases, etc.
+# But don't worry about loading the controllers and test files, RackStep will
+# load them for you.
 
 require './rackstep/rackstep'
-
-# Loading all the app controllers
-# TODO: move this to the RackStep?
-Dir[File.dirname(__FILE__) + '/controllers/*.rb'].each { |file| require file }
