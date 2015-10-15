@@ -45,7 +45,7 @@ class ExampleTest < MiniTest::Test
     # The response should be OK (200)
     assert_equal 200, request.status
     # Checking if the response contains the expceted text
-    assert_contains "Welcome to Rack Step", request.body
+    assert_contains "Welcome to RackStep", request.body
   end
 
   # Test if the invalid route is returning 404.
