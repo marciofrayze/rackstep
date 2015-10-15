@@ -1,3 +1,7 @@
+# Ignoring file created by OSX
+.DS_Store
+
+# Default ignores inserted by github (ruby .gitignore template)
 *.gem
 *.rbc
 /.config
