@@ -10,6 +10,10 @@ Main goals are:
 If you like ruby frameworks like Sinatra, you may like RackStep.
 
 
+## Travis-CI status
+![alt tag](https://api.travis-ci.org/mfdavid/RackStep.svg)
+
+
 ## Why yet another framework?
 
 Two main reasons:
