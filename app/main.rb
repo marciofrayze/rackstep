@@ -4,4 +4,5 @@
 require './rackstep/rackstep'
 
 # Loading all the app controllers
+# TODO: move this to the RackStep?
 Dir[File.dirname(__FILE__) + '/controllers/*.rb'].each { |file| require file }

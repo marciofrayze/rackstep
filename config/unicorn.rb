@@ -2,4 +2,3 @@
 
 worker_processes 7
 timeout 60
-

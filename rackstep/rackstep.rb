@@ -47,11 +47,11 @@ module RackStep
       Rack::Response.new("404 - Page not found", 404)
     end
 
-    # Will return a hash with the name of the controller and the action (method).
-    # If no valid route is found, will break the request and return http 404 (page
-    # not found).
+    # Will return a hash with the name of the controller and the method (action).
+    # If no valid route is found, will break the request and return http 404
+    # (page not found).
     def find_route
-      router.find_route_for(request.path)
+      router.find_route_for(request)
     end
 
   end

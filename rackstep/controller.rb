@@ -16,16 +16,16 @@ module RackStep
     end
 
     # This is not the best way to serve static content. In production, consider
-    # using Nginx or Apache. Using ruby/rack to serve static content is a waste of
-    # resources and should be only used for low traffic web pages. This method is
-    # provided so that in this circumstances you may use it to keep a simpler
-    # architecture.
+    # using Nginx or Apache. Using ruby/rack to serve static content is a waste
+    # of resources and should be only used for low traffic web pages. This
+    # method is provided so that in this circumstances you may use it to keep a
+    # simpler architecture.
     def render_page(pageName)
       @content_type = 'text/html'
-      # TODO: remove hard-coded directory.
+      # TODO: remove hard-coded directory?
       File.read("app/public/pages/#{pageName}.html")
     end
 
   end
-  
+
 end
