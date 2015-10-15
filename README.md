@@ -4,8 +4,9 @@ RackStep is (yet another) micro ruby framework for web development.
 
 Main goals are:
 - be dead simple.
-- keep the source small.
+- keep the source code small.
 - implement only the necessary; no overcomplication.
+- allow easy implementation of microservices and single-page application (SPA).
 
 If you like ruby frameworks like Sinatra, you may like RackStep.
 
@@ -35,9 +36,10 @@ Rack itself, but there are a few others recommended gem dependancies:
 ## How to
 
 RackStep is not (at least yet) a gem. To create a new application, clone this
-repository
-https://github.com/mfdavid/RackStep.git
+repository:
+git clone https://github.com/mfdavid/RackStep.git
 
+To run the application, use any rack-compatible server. For development I recommend using shotgun ou rackup. For production, RackStep is pre-configured to use unicorn.
 
 ## Author
 
