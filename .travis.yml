@@ -2,6 +2,7 @@
 # system.
 
 language: ruby
+before_script: cd app-template
 script: bundle exec rake test
 rvm:
   - 2.2.1
