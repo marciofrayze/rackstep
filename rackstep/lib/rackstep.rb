@@ -1,15 +1,10 @@
 require 'json'
 require_relative 'controller'
 require_relative 'router'
-require_relative '../app/approuter'
-require_relative '../app/main'
-# Loading all the app controllers
-# TODO: Find a better way to load this files
-Dir[File.dirname(__FILE__) + '/../app/controllers/*.rb'].each { |file| require file }
 
 module RackStep
 
-  class Dispatcher
+  class App
 
     # We will store the request and create a router in this class initializer.
     attr_reader :request, :router
@@ -22,15 +17,16 @@ module RackStep
 
     def initialize(env)
       @request = Rack::Request.new(env)
-      # TODO: Any better way to inject this? The RackStep depending directly
-      # of a class from app is kinda weird. Should be injected here somehow.
-      @router = AppRouter.new
+      @router = RackStep::Router.new
     end
 
     def process_request
       # Trying to find what controller should process this request.
-      route = find_route
-      # If none found, return 404 page not found
+      # This will return a hash with the name of the controller and the
+      # method (action).
+      route = router.find_route_for(request)
+      # If no valid route is found, will break the request and return http 404
+      # (page not found).
       if (route == nil)
         return page_not_found_response
       end
@@ -48,11 +44,8 @@ module RackStep
       Rack::Response.new("404 - Page not found", 404)
     end
 
-    # Will return a hash with the name of the controller and the method (action).
-    # If no valid route is found, will break the request and return http 404
-    # (page not found).
-    def find_route
-      router.find_route_for(request)
+    def add_route(verb, path, controller, method)
+      @router.add_route(verb, path, controller, method)
     end
 
   end

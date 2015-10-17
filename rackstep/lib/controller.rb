@@ -21,8 +21,8 @@ module RackStep
     # method is provided so that in this circumstances you may use it to keep a
     # simpler architecture.
     def render_page(pageName)
-      @content_type = 'text/html'
-      # TODO: remove hard-coded directory?
+      content_type = 'text/html'
+      # TODO: remove hard-coded directory
       File.read("app/public/pages/#{pageName}.html")
     end
 

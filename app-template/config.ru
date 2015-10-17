@@ -2,7 +2,9 @@
 # to start the server and load the application.
 
 # Loading RackStep
-require './rackstep/rackstep'
+require 'rackstep'
+# Loading the application
+require_relative './app/app'
 
 # Configuring Rack to serve static files (html, javascripts, images, etc).
 # To have a better performance in production, one good option is to serve this
@@ -17,4 +19,4 @@ use Rack::Static,
 use Rack::Deflater
 
 # Creates a new instance of the RackStep Dispatcher class for each request.
-run RackStep::Dispatcher
+run App

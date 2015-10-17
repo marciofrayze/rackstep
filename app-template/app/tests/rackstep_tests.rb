@@ -10,14 +10,14 @@
 # example.
 ENV['RACK_ENV'] = 'test'
 
+require 'rackstep'
+require_relative '../app'
 require 'rack/test'
 require 'minitest/autorun'
 
 # Using simplecov to generate a report.
 require 'simplecov'
 SimpleCov.start
-
-require_relative "../main.rb"
 
 # TODO: Move this to another place.
 # Extending the Minitest framework a new assertion method (contains).
@@ -38,7 +38,7 @@ class ExampleTest < MiniTest::Test
     AppRouter
   end
   def setup
-    @requester = Rack::MockRequest.new(RackStep::Dispatcher)
+    @requester = Rack::MockRequest.new(App)
   end
 
   # Test if the main route is returning the expected message.
