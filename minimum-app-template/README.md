@@ -8,7 +8,7 @@ since it's much more complete.
 
 ## Dependancies
 
-This example app was developed and tested with Ruby 2.2.1. The only hard
+This example app was developed and tested with Ruby 2.2.3. The only hard
 dependency is Rack itself.
 
 
