@@ -10,8 +10,6 @@ This example app was developed and tested with Ruby 2.2.1. The only hard
 dependency is Rack itself, but there are a few others recommended gem
 dependancies:
 - unicorn: fast rack-compatible server that can be used for production.
-- tux: nice utility similar to IRB, but that loads all your classes. Just run
-"tux" (after installing the gem) in your root directory.
 - simplecov: a simple way to generate statistics about you unit tests coverage.
 
 
