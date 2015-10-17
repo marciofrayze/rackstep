@@ -6,5 +6,5 @@ require 'rackstep'
 # Loading the application
 require_relative './app/app'
 
-# Creates a new instance of the RackStep Dispatcher class for each request.
+# Creates a new instance of the RackStep App class for each request.
 run App
