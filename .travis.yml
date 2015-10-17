@@ -6,3 +6,5 @@ before_script: cd app-template
 script: bundle exec rake test
 rvm:
   - 2.2.1
+gemfile:
+  - app-template/Gemfile
