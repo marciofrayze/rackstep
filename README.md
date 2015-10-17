@@ -41,6 +41,16 @@ git clone https://github.com/mfdavid/RackStep.git
 
 To run the application, use any rack-compatible server. For development I recommend using shotgun ou rackup. For production, RackStep is pre-configured to use unicorn.
 
+
+## TODOs (some of them)
+
+- use RDoc or YARD for documentation.
+- generate a GEM.
+- create more unit tests.
+- add some performance tests and do some optimizations.
+- solve all the TODOs listed around the source code.
+
+
 ## Author
 
 RackStep is developed by Marcio Frayze David - mfdavid@gmail.com.
