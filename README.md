@@ -44,7 +44,6 @@ To run the application, use any rack-compatible server. For development I recomm
 ## TODOs (some of them)
 
 - use RDoc or YARD for documentation.
-- generate a GEM.
 - create more unit tests.
 - add some performance tests and do some optimizations.
 - solve all the TODOs listed around the source code.
