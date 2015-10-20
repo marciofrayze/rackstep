@@ -1,26 +1,16 @@
 # RackStep
 
-RackStep is (yet another) micro ruby framework for micro-services and web development.
+RackStep is (yet another) micro ruby framework for microservices and web development.
 
 Main goals are:
-- be dead simple.
+- be as simple as possible.
 - keep the source code small.
 - implement only the necessary; no overcomplication.
 - allow easy implementation of microservices and single-page application (SPA).
 
-If you like ruby frameworks like Sinatra, you may like RackStep.
-
 
 ## Travis-CI status
 ![alt tag](https://api.travis-ci.org/mfdavid/RackStep.svg)
-
-
-## Why yet another framework?
-
-Two main reasons:
-- I like the principle behind Sinatra, but I dislike the way it is implemented,
-so I decided to create an alternative to use it on my side projects.
-- I wanted to learn more about how Rack works.
 
 
 ## Dependancies
