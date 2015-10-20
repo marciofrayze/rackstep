@@ -18,7 +18,6 @@ Main goals are:
 RackStep is developed and tested with Ruby 2.2.3. The only hard dependency is
 Rack itself, but there are a few others recommended gem dependancies:
 - unicorn: fast rack-compatible server that can be used for production.
-- sanitize: very good and simple lib to sanitize any parameters passed from the user, to avoid sql injection, etc.
 - simplecov: a simple way to generate statistics about you unit tests coverage.
 
 
