@@ -3,7 +3,7 @@
 
 language: ruby
 before_script: cd rackstep
-script: rake test
+script: bundle exec rake test
 rvm:
   - 2.2.3
 gemfile:
