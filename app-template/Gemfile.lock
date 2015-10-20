@@ -12,6 +12,8 @@ GEM
     nokogumbo (1.4.1)
       nokogiri
     rack (1.6.4)
+    rack-test (0.6.3)
+      rack (>= 1.0)
     raindrops (0.15.0)
     rake (10.4.2)
     sanitize (4.0.0)
@@ -33,7 +35,11 @@ PLATFORMS
 
 DEPENDENCIES
   minitest
+  rack-test
   rake
   sanitize
   simplecov
   unicorn
+
+BUNDLED WITH
+   1.10.6
