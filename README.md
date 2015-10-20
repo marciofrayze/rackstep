@@ -1,6 +1,6 @@
 # RackStep
 
-RackStep is (yet another) micro ruby framework for web development.
+RackStep is (yet another) micro ruby framework for micro-services and web development.
 
 Main goals are:
 - be dead simple.
