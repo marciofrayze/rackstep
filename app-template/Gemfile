@@ -4,10 +4,9 @@ ruby "2.2.3"
 # Used for unit testing execution.
 gem 'rake'
 group :test do
-  gem 'minitest'
+  gem 'minitest'  # Simple unit test framework
+  gem 'simplecov', :require => false, :group => :test   # A simple way to generate statistics about you unit tests coverage.
 end
 
-# All this gems are optional, but highly recommended.
 gem 'unicorn'   # Fast rack-compatible server that can be used for production.
 gem 'sanitize'  # Very good and simple lib to sanitize any parameters passed from the user, to avoid sql injection, etc.
-gem 'simplecov', :require => false, :group => :test   # A simple way to generate statistics about you unit tests coverage.

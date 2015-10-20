@@ -1,4 +1,3 @@
-require 'json'
 require_relative 'controller'
 require_relative 'router'
 
@@ -9,8 +8,7 @@ module RackStep
     # We will store the request and create a router in this class initializer.
     attr_reader :request, :router
 
-    # Static method called from config.ru ("run RackStep::Dispatcher") that
-    # initialize a new instance of this class.
+    # Static method called from config.ru ("run App").
     def self.call(env)
       new(env).process_request
     end
@@ -22,8 +20,8 @@ module RackStep
 
     def process_request
       # Trying to find what controller should process this request.
-      # This will return a hash with the name of the controller and the
-      # method (action).
+      # This will return a hash with the name of the controller, the
+      # method (action), etc.
       route = router.find_route_for(request)
       # If no valid route is found, will break the request and return http 404
       # (page not found).
@@ -34,6 +32,8 @@ module RackStep
       controller = Object.const_get(route.controller).new
       # Inject the request into the Controller
       controller.request = request
+      # Execute the before method of this controller
+      controller.send(:before)
       # Execute the apropriate method/action
       response_content = controller.send(route.method)
       # Generate a rack response that will be returned to the user
@@ -44,6 +44,7 @@ module RackStep
       Rack::Response.new("404 - Page not found", 404)
     end
 
+    # Adds a new route to the application.
     def add_route(verb, path, controller, method)
       @router.add_route(verb, path, controller, method)
     end

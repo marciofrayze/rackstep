@@ -15,6 +15,13 @@ module RackStep
       @content_type = 'application/json'
     end
 
+    # RackStep will always execute this method before delegating the request
+    # processing to the specified method. The user may overwrite this method.
+    # This can be used to check for access authorization or any piece of code
+    # that must be executed before every request for this controller.
+    def before
+    end
+
     # This is not the best way to serve static content. In production, consider
     # using Nginx or Apache. Using ruby/rack to serve static content is a waste
     # of resources and should be only used for low traffic web pages. This

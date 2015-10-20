@@ -8,6 +8,7 @@ class App < RackStep::App
     super(env)
 
     add_route('GET', '', 'Root', 'index')
+    add_route('GET', 'json', 'Root', 'myJsonService')
   end
 
 end

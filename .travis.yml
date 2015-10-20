@@ -2,9 +2,8 @@
 # system.
 
 language: ruby
-before_script: cd app-template
-script: bundle exec rake test
+script: rake test
 rvm:
-  - 2.2.1
+  - 2.2.3
 gemfile:
   - app-template/Gemfile

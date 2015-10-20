@@ -37,7 +37,7 @@ module RackStep
   end
 
   # Represents a single route. The verb can be 'GET', 'PUT', 'POST' or 'DELETE'.
-  # The path is a string with something like '/users', the controller is the
+  # The path is a string with something like 'users', the controller is the
   # name of the class that will process this type of request and the method
   # parameter is the name of the method that will be executed.
   class Route

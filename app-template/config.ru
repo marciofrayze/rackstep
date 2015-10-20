@@ -1,4 +1,4 @@
-# This file is used by any rack-compatible server and give instructions on how
+# This file is used by any rack-compatible server and gives instructions on how
 # to start the server and load the application.
 
 # Loading RackStep
@@ -18,5 +18,7 @@ use Rack::Static,
 # TODO: Check if image requests are also being compressed and avoid it.
 use Rack::Deflater
 
-# Creates a new instance of the RackStep App class for each request.
+# TODO: Include Rack Attack
+
+# Inform rack server to create a new instance of the App class for each request.
 run App
