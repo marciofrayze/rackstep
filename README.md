@@ -25,11 +25,10 @@ so I decided to create an alternative to use it on my side projects.
 
 ## Dependancies
 
-RackStep is developed and tested with Ruby 2.2.1. The only hard dependency is
+RackStep is developed and tested with Ruby 2.2.3. The only hard dependency is
 Rack itself, but there are a few others recommended gem dependancies:
 - unicorn: fast rack-compatible server that can be used for production.
 - sanitize: very good and simple lib to sanitize any parameters passed from the user, to avoid sql injection, etc.
-- tux: nice utility similar to IRB, but that loads all your classes. Just run "tux" (after installing the gem) in your root directory.
 - simplecov: a simple way to generate statistics about you unit tests coverage.
 
 
@@ -45,7 +44,6 @@ To run the application, use any rack-compatible server. For development I recomm
 ## TODOs (some of them)
 
 - use RDoc or YARD for documentation.
-- generate a GEM.
 - create more unit tests.
 - add some performance tests and do some optimizations.
 - solve all the TODOs listed around the source code.
