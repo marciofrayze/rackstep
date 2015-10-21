@@ -10,4 +10,4 @@ group :test do
 end
 
 gem 'unicorn'   # Fast rack-compatible server that can be used for production.
-gem 'sanitize'  # Very good and simple lib to sanitize any parameters passed from the user, to avoid sql injection, etc.
+#gem 'sanitize'  # Very good and simple lib to sanitize any parameters passed from the user, to avoid sql injection, etc.
