@@ -26,7 +26,7 @@ class ValidRoutesTest < MiniTest::Test
 
   # Test if the json route is returning the expected content.
   def test_json_route
-    # Requesting the root page of the application.
+    # Requesting the myJsonService page of the application.
     request = @requester.get URI.escape('/myJsonService')
     # The response should be OK (200)
     assert_equal 200, request.status
@@ -34,6 +34,20 @@ class ValidRoutesTest < MiniTest::Test
     assert_equal 'application/json', request.content_type
     # Checking if the response contains the expceted text
     expected_body = '{"name":"John Doe","age":"27","job":"Developer"}'
+    assert_contains expected_body, request.body
+  end
+
+  # Test if the htmlPage route is returning the expected content. We want to
+  # test if render_page is working properly.
+  def test_json_route
+    # Requesting the htmlPage page of the application.
+    request = @requester.get URI.escape('/htmlPage')
+    # The response should be OK (200)
+    assert_equal 200, request.status
+    # Content type should be HTML
+    assert_equal 'text/html', request.content_type
+    # Checking if the response contains the expceted text
+    expected_body = 'Just a sample app page'
     assert_contains expected_body, request.body
   end
 

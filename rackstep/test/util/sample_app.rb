@@ -17,6 +17,9 @@ class SampleApp < RackStep::App
 
     # Adding a route to requests made to a sample json service.
     add_route('GET', 'myJsonService', 'Root', 'myJsonService')
+
+    # Adding route to requests made to a simple html page.
+    add_route('GET', 'htmlPage', 'Root', 'htmlPage')
   end
 
 end
@@ -29,11 +32,11 @@ class Root < RackStep::Controller
     # applications, so by default it will set the content type of the response
     # as JSON, but for this example, let's chance that to plain txt.
     # TODO: avoid using attribute to set this
-    @content_type = 'text/plain'
+    response[:contentType] = 'text/plain'
 
     # Anything that is returned by the controller will be the body of the
     # request response back to the user. Let's return a simple string of text.
-    "Welcome to the RackStep Sample App."
+    response[:content]  = "Welcome to the RackStep Sample App."
   end
 
   def myJsonService
@@ -43,7 +46,16 @@ class Root < RackStep::Controller
     user['age'] = '27'
     user['job'] = 'Developer'
 
-    return user.to_json
+    response[:content] = user.to_json
+  end
+
+  def htmlPage
+    # Overwriting default directory (don't wanna create the whole default
+    # folders structure).
+    @pagesDirectory = 'test/util/pages'
+
+    response[:content] = render_page('justatestpage')
+    response[:contentType] = 'text/html'
   end
 
 end

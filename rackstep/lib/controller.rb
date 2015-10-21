@@ -7,12 +7,17 @@ module RackStep
 
     # The request will be injected here.
     attr_accessor :request
-    # Stores the content type that will be used for the response.
-    attr_accessor :content_type
+    # Represents the response information that will be delivered to the user
+    # (a Hash with contentType, content and httpStatus).
+    # By default httpStatus is 200 and contentType is application/json.
+    attr_accessor :response
 
     def initialize
-      # The default response content type is json, but may be altered.
-      @content_type = 'application/json'
+      @response = Hash.new
+      @response[:contentType] = 'application/json'
+      @response[:httpStatus]  = 200
+      @response[:content] = ''
+      @pagesDirectory = 'app/public/pages'
     end
 
     # RackStep will always execute this method before delegating the request
@@ -28,9 +33,8 @@ module RackStep
     # method is provided so that in this circumstances you may use it to keep a
     # simpler architecture.
     def render_page(pageName)
-      @content_type = 'text/html'
-      # TODO: remove hard-coded directory
-      File.read("app/public/pages/#{pageName}.html")
+      response[:contentType] = 'text/html'
+      File.read("#{@pagesDirectory}/#{pageName}.html")
     end
 
   end

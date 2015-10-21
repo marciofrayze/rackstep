@@ -35,11 +35,15 @@ module RackStep
       # Execute the before method of this controller
       controller.send(:before)
       # Execute the apropriate method/action
-      response_content = controller.send(route.method)
+      controller.send(route.method)
+      response = controller.response
       # Generate a rack response that will be returned to the user
-      Rack::Response.new(response_content, 200, {'Content-Type' => controller.content_type})
+      Rack::Response.new( response[:content],
+                          response[:httpStatus],
+                          {'Content-Type' => response[:contentType]} )
     end
 
+    # Will use this as response when no route is found.
     def page_not_found_response
       Rack::Response.new("404 - Page not found", 404)
     end
