@@ -23,9 +23,7 @@ Rack itself, but there are a few others recommended gem dependancies:
 
 ## How to
 
-RackStep is not (at least yet) a gem. To create a new application, clone this
-repository:
-git clone https://github.com/mfdavid/RackStep.git
+To create a new application, clone this repository and use the example available at the app-template folder as a starting point.
 
 To run the application, use any rack-compatible server. For development I recommend using shotgun ou rackup. For production, RackStep is pre-configured to use unicorn.
 
