@@ -18,20 +18,24 @@ Main goals are:
 RackStep is developed and tested with Ruby 2.2.3. The only hard dependency is
 Rack itself, but there are a few others recommended gem dependancies:
 - unicorn: fast rack-compatible server that can be used for production.
-- simplecov: a simple way to generate statistics about you unit tests coverage.
+- simplecov: a simple way to generate statistics about your unit tests coverage.
 
 
 ## How to
 
+Install the RackStep gem:
+
+gem install rackstep
+
 To create a new application, clone this repository and use the example available at the app-template folder as a starting point.
 
-To run the application, use any rack-compatible server. For development I recommend using shotgun ou rackup. For production, RackStep is pre-configured to use unicorn.
+Run the application using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep is pre-configured to use unicorn.
 
 
 ## TODOs (some of them)
 
 - use RDoc or YARD for documentation.
-- create more unit tests.
+- create more tests.
 - add some performance tests and do some optimizations.
 - solve all the TODOs listed around the source code.
 

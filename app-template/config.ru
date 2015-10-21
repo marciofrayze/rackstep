@@ -8,8 +8,8 @@ require_relative './app/app'
 
 # Configuring Rack to serve static files (html, javascripts, images, etc).
 # To have a better performance in production, one good option is to serve this
-# type of content using Nginx or Apache servers instead and use rack/ruby only
-# for dinamic/business requests.
+# type of content using Nginx, Apache servers or Amazon S3 instead and use 
+# rack/ruby only for dinamic/business requests.
 use Rack::Static,
   :urls => ['/images', '/javascript', '/css', '/fonts', '/pages'],
   :root => 'app/public/'
