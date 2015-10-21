@@ -35,7 +35,7 @@ Run the application using any rack-compatible server. For development I recommen
 ## TODOs (some of them)
 
 - use RDoc or YARD for documentation.
-- create more unit tests.
+- create more tests.
 - add some performance tests and do some optimizations.
 - solve all the TODOs listed around the source code.
 
