@@ -29,7 +29,7 @@ gem install rackstep
 
 To create a new application, clone this repository and use the example available at the app-template folder as a starting point.
 
-Run the application using any rack-compatible server. For development I recommend using shotgun ou rackup. For production, RackStep is pre-configured to use unicorn.
+Run the application using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep is pre-configured to use unicorn.
 
 
 ## TODOs (some of them)
