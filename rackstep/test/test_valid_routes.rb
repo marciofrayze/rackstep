@@ -4,10 +4,10 @@ require 'test_helper'
 
 class ValidRoutesTest < MiniTest::Test
 
-  # Including rack test methods.
+  # Including rack test methods to allow use of assert_*.
   include Rack::Test::Methods
 
-  # Setting up
+  # Setting up a Mock to simulate the requests.
   def setup
     @requester = Rack::MockRequest.new(SampleApp)
   end
