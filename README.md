@@ -10,7 +10,7 @@ Main goals are:
 
 
 ## Travis-CI status
-![alt tag](https://api.travis-ci.org/mfdavid/RackStep.svg)
+![alt tag](https://api.travis-ci.org/mfdavid/rackstep.svg)
 
 
 ## Dependancies
@@ -27,9 +27,15 @@ Install the RackStep gem:
 
 gem install rackstep
 
-To create a new application, clone this repository and use the example available at the app-template folder as a starting point.
+To create a new application, you may clone one of the following repositories as a starting point example:
 
-Run the application using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep is pre-configured to use unicorn.
+A full app example:
+https://github.com/mfdavid/rackstep-app-template
+
+A minimum app example:
+https://github.com/mfdavid/rackstep-minimum-app-template
+
+Run the application using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep full app example is pre-configured to use unicorn.
 
 
 ## TODOs (some of them)
