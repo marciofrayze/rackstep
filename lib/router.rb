@@ -18,19 +18,20 @@ module RackStep
 
     # Given a request, will parse it's path to find what it the apropriate
     # controller and mehod/action to respond it.
-    def find_route_for(request)
-      path = request.path
+    def find_route_for(path, verb)
       # Ignoring the first char if path starts with '/'. This way the path of
       # 'http//localhost/' will be the same of 'http://localhost' (both will
       # be empty strings).
       path = path[1..-1] if path[0] == '/'
-      # Extracting the type of request (GET, POST, PUT, DELETE).
-      verb = request.request_method
       # Re-creating the route id (verb + path).
       route_id = verb + path
       # Getting the correspondent route or nil if route is invalid.
       route = routes[route_id]
-
+      # If no route was found, set it to 'notfound' route (maintaining the
+      # original verb).
+      if route == nil
+        route = routes["#{verb}notfound"]
+      end
       return route
     end
 

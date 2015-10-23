@@ -39,4 +39,16 @@ module RackStep
 
   end
 
+  # This controller will handle error the error "page not found". The user may
+  # overwrite this by creating new router to 'notfound'.
+  class ErrorController < RackStep::Controller
+
+    def not_found
+      @response[:contentType] = 'text/plain'
+      @response[:httpStatus]  = 404
+      @response[:content] = '404 - Page not found'
+    end
+
+  end
+
 end

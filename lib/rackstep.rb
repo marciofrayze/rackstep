@@ -1,6 +1,8 @@
 require_relative 'controller'
 require_relative 'router'
 
+# TODO: many methods here should be private.
+
 module RackStep
 
   class App
@@ -16,18 +18,16 @@ module RackStep
     def initialize(env)
       @request = Rack::Request.new(env)
       @router = RackStep::Router.new
+
+      # Adding default routes to handle page not found (404).
+      for_all_verbs_add_route('notfound', 'RackStep::ErrorController', 'not_found')
     end
 
     def process_request
-      # Trying to find what controller should process this request.
-      # This will return a hash with the name of the controller, the
-      # method (action), etc.
-      route = router.find_route_for(request)
-      # If no valid route is found, will break the request and return http 404
-      # (page not found).
-      if (route == nil)
-        return page_not_found_response
-      end
+      verb = @request.request_method
+      path = @request.path
+      route = router.find_route_for(path, verb)
+
       # Initialize the correspondent controller
       controller = Object.const_get(route.controller).new
       # Inject the request into the Controller
@@ -43,9 +43,13 @@ module RackStep
                           {'Content-Type' => response[:contentType]} )
     end
 
-    # Will use this as response when no route is found.
-    def page_not_found_response
-      Rack::Response.new("404 - Page not found", 404)
+    # Adds new routes to the application, one for each possible http verb (GET,
+    # POST, DELETE and PUT).
+    def for_all_verbs_add_route(path, controller, method)
+      @router.add_route('GET', path, controller, method)
+      @router.add_route('POST', path, controller, method)
+      @router.add_route('DELETE', path, controller, method)
+      @router.add_route('PUT', path, controller, method)
     end
 
     # Adds a new route to the application.
