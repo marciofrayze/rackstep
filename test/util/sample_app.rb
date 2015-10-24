@@ -1,4 +1,4 @@
-# This sample app will be used by our unit tests to check if the RackStep is
+# This sample app will be used by ours tests to check if the RackStep is
 # doing what it was supposed to do.
 
 # Loading RackStep files

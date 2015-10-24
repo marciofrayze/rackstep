@@ -1,10 +1,13 @@
-
+# Router is one of the fundamental parts of RackStep. It's the router that tell
+# us, given a path and a http verb, what controller and method should handle
+# the business logic of the request.
 module RackStep
 
   class Router
 
     # Will store all the possible routes. By default it's empty and should be
-    # populated by the application.
+    # populated by the application (RackStep will add a 404 route, the others
+    # should be added by the user).
     attr_accessor :routes
 
     def initialize
@@ -29,9 +32,8 @@ module RackStep
       route = routes[route_id]
       # If no route was found, set it to 'notfound' route (maintaining the
       # original verb).
-      if route == nil
-        route = routes["#{verb}notfound"]
-      end
+      route = routes["#{verb}notfound"] if route == nil
+
       return route
     end
 
@@ -52,7 +54,7 @@ module RackStep
       @method = method
     end
 
-    # Unique id of the route (verb + path). Eg: 'GETuser'
+    # Unique id of the route (verb + path). Eg: 'GETuser'.
     def id
       verb + path
     end

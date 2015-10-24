@@ -1,8 +1,6 @@
 require_relative 'controller'
 require_relative 'router'
 
-# TODO: many methods here should be private.
-
 module RackStep
 
   class App
@@ -26,18 +24,22 @@ module RackStep
     def process_request
       verb = @request.request_method
       path = @request.path
-      route = router.find_route_for(path, verb)
 
-      # Initialize the correspondent controller
+      # In RackStep, each request is processed by a method of a controller. The
+      # router is responsable to find, based on the given path and http verb,
+      # the apropriate controller and method to handle the request.
+      route = router.find_route_for(path, verb)
+      # Initialize the correspondent controller.
       controller = Object.const_get(route.controller).new
-      # Inject the request into the Controller
+      # Inject the request into the Controller.
       controller.request = request
-      # Execute the before method of this controller
+      # Execute the before method of this controller.
       controller.send(:before)
-      # Execute the apropriate method/action
+      # Execute the apropriate method/action.
       controller.send(route.method)
+      # Get from the controller what is the response for this request.
       response = controller.response
-      # Generate a rack response that will be returned to the user
+      # Generate a rack response that will be returned to the user.
       Rack::Response.new( response[:content],
                           response[:httpStatus],
                           {'Content-Type' => response[:contentType]} )

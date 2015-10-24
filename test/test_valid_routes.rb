@@ -1,4 +1,5 @@
-# This is just an unit test example class.
+# Testing RackStep framework. In this file we will test all valid ways of
+# declaring routes.
 
 require 'test_helper'
 
