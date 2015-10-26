@@ -42,19 +42,19 @@ end
 # Creating the controller that will process the request.
 class Root < RackStep::Controller
 
+  include RackStep::Controller::HtmlRendering
   include RackStep::Controller::ErbRendering
   include RackStep::Controller::BasicHttpAuthentication
-  include RackStep::Controller::HtmlRendering
 
   def index
     # RackStep was created mainly to be used for microservices and single page
     # applications, so by default it will set the content type of the response
-    # as JSON, but for this example, let's chance that to plain txt.
-    response[:type] = 'text/plain'
+    # to JSON, but for this example, let's chance that to plain txt.
+    response.header['Content-Type'] = 'text/plain'
 
     # Anything that is returned by the controller will be the body of the
     # request response back to the user. Let's return a simple string of text.
-    response[:content]  = "Welcome to the RackStep Sample App."
+    response.body  = 'Welcome to the RackStep Sample App.'
   end
 
   def my_json_service
@@ -64,7 +64,7 @@ class Root < RackStep::Controller
     user['age'] = '27'
     user['job'] = 'Developer'
 
-    response[:content] = user.to_json
+    response.body = user.to_json
   end
 
   def html_page
@@ -72,39 +72,43 @@ class Root < RackStep::Controller
     # folders structure).
     pages_directory = 'test/util/pages'
 
-    response[:content] = render_page('justatestpage', pages_directory)
-    response[:type] = 'text/html'
+    response.body = render_page('justatestpage', pages_directory)
+    response.header['Content-Type'] = 'text/html'
   end
 
   def settings_test_service
-    # At the sample_app.rb we set a :config. Lets retrieve it and send back as
-    # a response.
+    # At the initialize of sampleApp we set a :config. Lets retrieve it and
+    # send back as the body of our.
 
-    response[:content] = settings[:test]
+    response.body = settings[:test]
   end
 
   def render_erb_test
     # Let's render an ERB template to test the RackStep::ErbRendering module.
     pages_directory = 'test/util/pages'
 
-    @templateAttributeTest = "This is the content of the attribute."
-    response[:content] = render_erb('justatesttemplate', pages_directory)
-    response[:type] = 'text/html'
+    # Every attribute should be available for the template. In our case, it is
+    # expecting to find the following attribute:
+    @templateAttributeTest = 'This is the content of the attribute.'
+    response.body = render_erb('justatesttemplate', pages_directory)
+    response.header['Content-Type']  = 'text/html'
   end
 
   def protected_page
-    response[:type] = 'text/html'
+    response.header['Content-Type']  = 'text/html'
 
     credentials = basic_access_authentication_credentials
     if credentials != ['myBoringUsername', 'myBoringPassword']
       # TODO: Make life easier for the app developer.
-      response[:httpStatus] = 401
-      response[:content] = "Access Denied"
-      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-      return
+      response.status = 401
+      response.body = 'Access Denied'
+      # In a real life application you must set this header so the browser
+      # knows that it should ask for the username and password.
+      response.headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    else
+      # The credentials are fine! Let's show the page content.
+      response.body = 'Welcome! You are now logged in.'
     end
-
-    response[:content] = "Welcome! You are now logged in."
   end
 
 end

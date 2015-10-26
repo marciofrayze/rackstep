@@ -47,15 +47,16 @@ module RackStep
       controller.send(route.method)
       # Get from the controller what is the response for this request.
       response = controller.response
-      # Adding the content type to the header (other things may have been
-      # inserted by the user).
-      response[:headers]['Content-Type'] = response[:type]
-      # Generate a rack response that will be returned to the user.
-      rackResponse = Rack::Response.new( response[:content],
-                          response[:httpStatus],
-                          response[:headers] )
-                        #  { 'Content-Type' => response[:type],
-                        #    'WWW-Authenticate' => 'Basic realm="Restricted Area"' } )
+      # TODO: Review this.
+      # The response body must be an array. If it was set with an String,
+      # transform it to an array.
+      if response.body.is_a?(String)
+        body = Array.new
+        body << response.body
+        response.body = body
+      end
+
+      return response
     end
 
     # Adds new routes to the application, one for each possible http verb (GET,

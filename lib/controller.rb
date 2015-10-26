@@ -8,9 +8,7 @@ module RackStep
     # The request will be injected here.
     attr_accessor :request
 
-    # Represents the response information that will be delivered to the user
-    # (a Hash with type, content and httpStatus).
-    # By default httpStatus is 200 and type is application/json.
+    # The Rack::Response object that will be delivered to the user.
     attr_accessor :response
 
     # The 'global' app settings will be injected here. This may contain
@@ -19,12 +17,10 @@ module RackStep
     attr_accessor :settings
 
     def initialize
-      # TODO: Maybe create a RackStep::Response class?
-      @response = Hash.new
-      @response[:type] = 'application/json'
-      @response[:httpStatus]  = 200
-      @response[:content] = ''
-      @response[:headers] = Hash.new
+      @response = Rack::Response.new
+      @response.body = ''
+      @response.header['Content-Type'] = 'application/json'
+      @response.status = 200
     end
 
     # RackStep will always execute this method before delegating the request
@@ -34,22 +30,17 @@ module RackStep
     def before
     end
 
-    # Since headers is a hash, when using it directly the syntax is a little
-    # wierd, so let's create an alias for it
-    def headers
-      @response[:headers]
-    end
-
   end
+
 
   # This controller will handle error the error "page not found". The user may
   # overwrite this by creating new router to 'notfound'.
   class ErrorController < RackStep::Controller
 
     def not_found
-      @response[:type] = 'text/plain'
-      @response[:httpStatus]  = 404
-      @response[:content] = '404 - Page not found'
+      @response.body = '404 - Page not found'
+      @response.header['Content-Type'] = 'text/plain'
+      @response.status  = 404
     end
 
   end
