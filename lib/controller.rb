@@ -40,16 +40,6 @@ module RackStep
       @response[:headers]
     end
 
-    # This is not the best way to serve static content. In production, consider
-    # using Nginx or Apache. Using ruby/rack to serve static content is a waste
-    # of resources and should be only used for low traffic web pages. This
-    # method is provided so that in this circumstances you may use it to keep a
-    # simpler architecture.
-    # TODO: Move this to a module.
-    def render_page(page_name, pages_directory = 'app/public/pages')
-      File.read("#{pages_directory}/#{page_name}.html")
-    end
-
   end
 
   # This controller will handle error the error "page not found". The user may
@@ -66,12 +56,24 @@ module RackStep
 
 end
 
+# A module for controllers to add static html pages rendering.
+# This is not the best way to serve static content. In production, consider
+# using Nginx or Apache. Using ruby/rack to serve static content is a waste
+# of resources and should be only used for low traffic web pages. This
+# method is provided so that in this circumstances you may use it to keep a
+# simpler architecture.
+module RackStep::Controller::HtmlRendering
+  def render_page(page_name, pages_directory = 'app/public/pages')
+    File.read("#{pages_directory}/#{page_name}.html")
+  end
+end
+
 # A module for controllers to add ERB template rendering. RackStep is not meant
 # to be used for template rendering. We recommend you to use a SPA (Single Page
 # Application) approach. But if you want to, you may include this module into
 # your controller and render ERB templates, following the old ruby web way.
 # TODO: Add layout support.
-module RackStep::ErbRendering
+module RackStep::Controller::ErbRendering
 
   require 'erb'
 
@@ -85,7 +87,7 @@ end
 
 
 # A module for controllers to add basic http authentication.
-module RackStep::BasicHttpAuthentication
+module RackStep::Controller::BasicHttpAuthentication
 
   def basic_access_authentication_credentials
     credentials = nil

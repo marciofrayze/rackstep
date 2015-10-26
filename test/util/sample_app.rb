@@ -42,8 +42,9 @@ end
 # Creating the controller that will process the request.
 class Root < RackStep::Controller
 
-  include RackStep::ErbRendering
-  include RackStep::BasicHttpAuthentication
+  include RackStep::Controller::ErbRendering
+  include RackStep::Controller::BasicHttpAuthentication
+  include RackStep::Controller::HtmlRendering
 
   def index
     # RackStep was created mainly to be used for microservices and single page
