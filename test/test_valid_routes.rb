@@ -40,7 +40,7 @@ class ValidRoutesTest < MiniTest::Test
 
   # Test if the htmlPage route is returning the expected content. We want to
   # test if render_page is working properly.
-  def test_json_route
+  def test_render_page_route
     # Requesting the htmlPage page of the application.
     request = @requester.get URI.escape('/htmlPage')
     # The response should be OK (200)
@@ -49,6 +49,20 @@ class ValidRoutesTest < MiniTest::Test
     assert_equal 'text/html', request.content_type
     # Checking if the response contains the expceted text
     expected_body = 'Just a sample app page'
+    assert_contains expected_body, request.body
+  end
+
+  # Test if the erbPage route is returning the expected content. We want to
+  # test if render_template is working properly.
+  def test_render_erb_route
+    # Requesting the htmlPage page of the application.
+    request = @requester.get URI.escape('/erbPage')
+    # The response should be OK (200)
+    assert_equal 200, request.status
+    # Content type should be HTML
+    assert_equal 'text/html', request.content_type
+    # Checking if the response contains the expceted text
+    expected_body = 'This is the content of the attribute.'
     assert_contains expected_body, request.body
   end
 

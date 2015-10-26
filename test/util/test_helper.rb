@@ -36,3 +36,9 @@ module Minitest::Assertions
     assert obj.include?(exp_substr), msg
   end
 end
+
+# TODO: Move this to another place?
+# Used to test basic http authentication
+def encode_credentials(username, password)
+  "Basic " + Base64.encode64("#{username}:#{password}")
+end
