@@ -2,7 +2,7 @@
 # declaring routes.
 
 require 'test_helper'
-require 'Base64'
+require 'base64'
 
 class BasicAuthRoutesTest < MiniTest::Test
 
