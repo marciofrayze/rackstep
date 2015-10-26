@@ -85,7 +85,6 @@ module RackStep::Controller::ErbRendering
 
 end
 
-
 # A module for controllers to add basic http authentication.
 module RackStep::Controller::BasicHttpAuthentication
 
