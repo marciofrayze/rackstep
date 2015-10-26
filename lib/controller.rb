@@ -19,14 +19,12 @@ module RackStep
     attr_accessor :settings
 
     def initialize
+      # TODO: Maybe create a RackStep::Response class?
       @response = Hash.new
       @response[:type] = 'application/json'
       @response[:httpStatus]  = 200
       @response[:content] = ''
       @response[:headers] = Hash.new
-      # Since headers is a hash, when using it directly the syntax is a little
-      # wierd, so let's create an alias for it
-      #alias headers @response[:headers]
     end
 
     # RackStep will always execute this method before delegating the request
@@ -34,6 +32,12 @@ module RackStep
     # This can be used to check for access authorization or any piece of code
     # that must be executed before every request for this controller.
     def before
+    end
+
+    # Since headers is a hash, when using it directly the syntax is a little
+    # wierd, so let's create an alias for it
+    def headers
+      @response[:headers]
     end
 
     # This is not the best way to serve static content. In production, consider

@@ -99,7 +99,7 @@ class Root < RackStep::Controller
       # TODO: Make life easier for the app developer.
       response[:httpStatus] = 401
       response[:content] = "Access Denied"
-      response[:headers]['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
       return
     end
 
