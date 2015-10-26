@@ -7,5 +7,5 @@ group :test do
   gem 'minitest'  # Simple unit test framework
   gem 'rack-test' # Unit test for rack
   gem 'simplecov', :require => false, :group => :test   # A simple way to generate statistics about you unit tests coverage.
-  gem 'base64'
+  gem 'rubysl'
 end
