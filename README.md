@@ -9,8 +9,9 @@ Main goals are:
 - allow easy implementation of microservices and single-page application (SPA).
 
 
-## Travis-CI status
+## Status
 ![alt tag](https://api.travis-ci.org/mfdavid/rackstep.svg)
+![alt tag](https://codeclimate.com/github/mfdavid/rackstep/badges/gpa.svg)
 
 
 ## Dependancies
