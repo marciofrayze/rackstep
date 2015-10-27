@@ -68,8 +68,7 @@ class Root < RackStep::Controller
     # to JSON, but for this example, let's chance that to plain txt.
     response.header['Content-Type'] = 'text/plain'
 
-    # Anything that is returned by the controller will be the body of the
-    # request response back to the user. Let's return a simple string of text.
+    # Let's set as the body of the response a simple string of text.
     response.body  = 'Welcome to the RackStep Sample App.'
   end
 
