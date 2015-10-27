@@ -11,15 +11,9 @@ Main goals are:
 
 ## Status
 [![Gem Version](https://badge.fury.io/rb/rackstep.svg)](https://badge.fury.io/rb/rackstep)
-[![Travis CI](https://api.travis-ci.org/mfdavid/rackstep.svg)](ttps://travis-ci.org/mfdavid/rackstep)
+[![Travis CI](https://api.travis-ci.org/mfdavid/rackstep.svg)](https://travis-ci.org/mfdavid/rackstep)
 [![Code Climate](https://codeclimate.com/github/mfdavid/rackstep/badges/gpa.svg)](https://codeclimate.com/github/mfdavid/rackstep)
 [![Ich CI](http://inch-ci.org/github/mfdavid/rackstep.png)](http://inch-ci.org/github/mfdavid/rackstep)
-
-[Travis-CI - Tests execution log](https://travis-ci.org/mfdavid/rackstep)
-
-[Code Climate - Code review analysis](https://codeclimate.com/github/mfdavid/rackstep)
-
-[Inch-CI - Documentation coverage analysis](http://inch-ci.org/github/mfdavid/rackstep)
 
 
 ## Dependancies
