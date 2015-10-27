@@ -17,9 +17,9 @@ module RackStep
     attr_accessor :settings
 
     def initialize
-      @response = Rack::Response.new
+      @response = RackStep::Response.new
       @response.body = ''
-      @response.header['Content-Type'] = 'application/json'
+      @response.content_type = 'application/json'
       @response.status = 200
     end
 
@@ -46,7 +46,7 @@ module RackStep
 
     def not_found
       @response.body = '404 - Page not found'
-      @response.header['Content-Type'] = 'text/plain'
+      @response.content_type = 'text/plain'
       @response.status  = 404
     end
 
@@ -75,8 +75,8 @@ module RackStep::Controller::ErbRendering
 
   require 'erb'
 
-  def render_erb(template_name, pages_directory = 'app/public/pages')
-    template_path = "#{pages_directory}/#{template_name}.erb"
+  def render_erb(template_name, erb_template_directory = 'app/public/pages')
+    template_path = "#{erb_template_directory}/#{template_name}.erb"
     erb = ERB.new(File.open(template_path).read)
     return erb.result(binding)
   end

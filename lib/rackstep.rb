@@ -50,14 +50,6 @@ module RackStep
       controller.send(:after)
       # Get from the controller what is the response for this request.
       response = controller.response
-      # TODO: Review this.
-      # The response body must be an array. If it was set with an String,
-      # transform it to an array.
-      if response.body.is_a?(String)
-        body = Array.new
-        body << response.body
-        response.body = body
-      end
 
       return response
     end
@@ -74,6 +66,32 @@ module RackStep
     # Adds a new route to the application.
     def add_route(verb, path, controller, method)
       @router.add_route(verb, path, controller, method)
+    end
+
+  end
+
+  # Let's extend the Rack Response class to add a few methods to make the life
+  # of the developer a little easier.
+  class Response < Rack::Response
+
+    # The original body= method of Rack::Response expects an array. In RackStep
+    # the user may set it as a String and we will convert it to array if
+    # necessary.
+    def body=(value)
+      if value.is_a?(String)
+        # Convert it to an array.
+        value = [value]
+      end
+
+      super(value)
+    end
+
+    def content_type
+      header['Content-Type']
+    end
+
+    def content_type=(value)
+      header['Content-Type'] = value
     end
 
   end

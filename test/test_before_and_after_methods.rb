@@ -27,7 +27,8 @@ class ControllerBeforeAndAfterExecutionTest < MiniTest::Test
     env =  { "REQUEST_METHOD"=>"GET", "PATH_INFO"=>"/beforeAndAfter" }
     app = SampleApp.new(env)
     response = app.process_request
-    assert app.settings[:before_after] == "BeforeDuringAfter"
+    assert_equal response.content_type, 'application/json'
+    assert_equal app.settings[:before_after], "BeforeDuringAfter"
   end
 
 end

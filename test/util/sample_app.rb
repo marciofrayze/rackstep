@@ -66,10 +66,10 @@ class Root < RackStep::Controller
     # RackStep was created mainly to be used for microservices and single page
     # applications, so by default it will set the content type of the response
     # to JSON, but for this example, let's chance that to plain txt.
-    response.header['Content-Type'] = 'text/plain'
+    response.content_type = 'text/plain'
 
     # Let's set as the body of the response a simple string of text.
-    response.body  = 'Welcome to the RackStep Sample App.'
+    response.body = 'Welcome to the RackStep Sample App.'
   end
 
   def my_json_service
@@ -88,7 +88,7 @@ class Root < RackStep::Controller
     pages_directory = 'test/util/pages'
 
     response.body = render_page('justatestpage', pages_directory)
-    response.header['Content-Type'] = 'text/html'
+    response.content_type = 'text/html'
   end
 
   def settings_test_service
@@ -98,15 +98,15 @@ class Root < RackStep::Controller
     response.body = settings[:test]
   end
 
+  # Let's render an ERB template to test the RackStep::ErbRendering module.
   def erb_page
-    # Let's render an ERB template to test the RackStep::ErbRendering module.
-    pages_directory = 'test/util/pages'
+    erb_templates_directory = 'test/util/pages'
 
     # Every attribute should be available for the template. In our case, it is
     # expecting to find the following attribute:
     @templateAttributeTest = 'This is the content of the attribute.'
-    response.body = render_erb('justatesttemplate', pages_directory)
-    response.header['Content-Type']  = 'text/html'
+    response.body = render_erb('justatesttemplate', erb_templates_directory)
+    response.content_type = 'text/html'
   end
 
   def before_and_after
@@ -118,7 +118,7 @@ class Root < RackStep::Controller
   end
 
   def protected_page
-    response.header['Content-Type']  = 'text/html'
+    response.content_type = 'text/html'
 
     credentials = basic_access_authentication_credentials
     if credentials != ['myBoringUsername', 'myBoringPassword']
