@@ -14,6 +14,12 @@ Main goals are:
 ![alt tag](https://codeclimate.com/github/mfdavid/rackstep/badges/gpa.svg)
 ![alt tag](http://inch-ci.org/github/mfdavid/rackstep.png)
 
+[Travis-CI - Tests execution log](https://travis-ci.org/mfdavid/rackstep)
+
+[Code Climate - Code review analysis](https://codeclimate.com/github/mfdavid/rackstep)
+
+[Inch-CI - Documentation coverage analysis](http://inch-ci.org/github/mfdavid/rackstep)
+
 
 ## Dependancies
 
