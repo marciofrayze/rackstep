@@ -13,7 +13,7 @@ class ValidRoutesTest < MiniTest::Test
   end
 
   # Test if the main route is returning the expected message.
-  def test_setting
+  def test_settings
     # At the sample_app.rb we set a :config, lets check if it was injected into
     # the controller and if we can retrieve it back. For this, we created a
     # service, and here we will call that service.
