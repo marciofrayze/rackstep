@@ -12,6 +12,7 @@ Main goals are:
 ## Status
 ![alt tag](https://api.travis-ci.org/mfdavid/rackstep.svg)
 ![alt tag](https://codeclimate.com/github/mfdavid/rackstep/badges/gpa.svg)
+![alt tag](http://inch-ci.org/github/mfdavid/rackstep.png)
 
 
 ## Dependancies
