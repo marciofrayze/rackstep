@@ -21,7 +21,7 @@ class ControllerBeforeAndAfterExecutionTest < MiniTest::Test
   # variable. We also created a service called beforeAndAfter wich also adds
   # a string to the same variable. So we expect the before method to run first,
   # then the controller itself and at last the after. At this test we check if
-  # the order that the strings concateneted follow this behaviour.
+  # the order that the strings concatenated follow this behaviour.
   def test_before_and_after_methods
     # Fake/mock env variable to not break the execution.
     env =  { "REQUEST_METHOD"=>"GET", "PATH_INFO"=>"/beforeAndAfter" }
