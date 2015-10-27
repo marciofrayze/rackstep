@@ -1,5 +1,5 @@
 # This is a configuration file for using the travis-ci.org continuos integration
-# system.
+# and codeclimate.com systems.
 
 language: ruby
 script: bundle exec rake test
