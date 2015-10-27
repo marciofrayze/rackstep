@@ -19,30 +19,29 @@ class SampleApp < RackStep::App
     # them to the index method of Root controller.
     add_route('GET', '', 'Root', 'index')
 
-    # Adding a route to requests made to a sample json service.
+    # Route to requests made to a sample json service.
     add_route('GET', 'myJsonService', 'Root', 'my_json_service')
 
-    # Adding route to requests made to a simple html page.
+    # Route to requests made to a simple html page.
     add_route('GET', 'htmlPage', 'Root', 'html_page')
 
-    # Adding route to requests made to a service for testing the 'global'
-    # settings.
+    # Route to requests made to a service for testing the 'global' settings.
     add_route('GET', 'settingsTest', 'Root', 'settings_test_service')
 
-    # Adding route to requests made to a page that renders an ERB template.
+    # Route to requests made to a page that renders an ERB template.
     add_route('GET', 'erbPage', 'Root', 'erb_page')
 
-    # Adding route to requests made to basic access authentication page.
+    # Route to requests made to basic access authentication page.
     add_route('GET', 'protectedPage', 'Root', 'protected_page')
 
-    # Addint route to reqeust made to before and after methods test service.
+    # Route to request made to before and after methods test service.
     add_route('GET', 'beforeAndAfter', 'Root', 'before_and_after')
 
   end
 
 end
 
-# Creating the controller that will process the request.
+# Creating the controller that will process the requests.
 class Root < RackStep::Controller
 
   include RackStep::Controller::HtmlRendering
@@ -95,7 +94,7 @@ class Root < RackStep::Controller
 
   def settings_test_service
     # At the initialize of sampleApp we set a :config. Lets retrieve it and
-    # send back as the body of our.
+    # send back as the body of our response.
 
     response.body = settings[:test]
   end
