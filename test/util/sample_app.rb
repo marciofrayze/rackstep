@@ -30,10 +30,13 @@ class SampleApp < RackStep::App
     add_route('GET', 'settingsTest', 'Root', 'settings_test_service')
 
     # Adding route to requests made to a page that renders an ERB template.
-    add_route('GET', 'erbPage', 'Root', 'render_erb_test')
+    add_route('GET', 'erbPage', 'Root', 'erb_page')
 
     # Adding route to requests made to basic access authentication page.
     add_route('GET', 'protectedPage', 'Root', 'protected_page')
+
+    # Addint route to reqeust made to before and after methods test service.
+    add_route('GET', 'beforeAndAfter', 'Root', 'before_and_after')
 
   end
 
@@ -45,6 +48,20 @@ class Root < RackStep::Controller
   include RackStep::Controller::HtmlRendering
   include RackStep::Controller::ErbRendering
   include RackStep::Controller::BasicHttpAuthentication
+
+  # Overwriting the before method to test if it's working properly.
+  def before
+    # Will add something to the settings, so I can check in my test if this
+    # method was executed when it was supposed to.
+    settings[:before_after] = settings[:before_after].to_s + "Before"
+  end
+
+  # Overwriting the after method to test if it's working properly.
+  def after
+    # Will add something to the settings, so I can check in my test if this
+    # method was executed when it was supposed to.
+    settings[:before_after] = settings[:before_after].to_s + "After"
+  end
 
   def index
     # RackStep was created mainly to be used for microservices and single page
@@ -83,7 +100,7 @@ class Root < RackStep::Controller
     response.body = settings[:test]
   end
 
-  def render_erb_test
+  def erb_page
     # Let's render an ERB template to test the RackStep::ErbRendering module.
     pages_directory = 'test/util/pages'
 
@@ -92,6 +109,14 @@ class Root < RackStep::Controller
     @templateAttributeTest = 'This is the content of the attribute.'
     response.body = render_erb('justatesttemplate', pages_directory)
     response.header['Content-Type']  = 'text/html'
+  end
+
+  def before_and_after
+    # This service was created to test if the before and after execution was
+    # working properly. The sample app will set a variable at the 'global'
+    # settings hash (settings[:before_after]). Here I will return the content
+    # that variable.
+    settings[:before_after] = settings[:before_after].to_s + "During"
   end
 
   def protected_page

@@ -19,6 +19,7 @@ module RackStep
     end
 
     def initialize(env)
+      # TODO: Is it ok to leave request as an attribute?
       @request = Rack::Request.new(env)
       @router = RackStep::Router.new
       @settings = Hash.new
@@ -45,6 +46,8 @@ module RackStep
       controller.send(:before)
       # Execute the apropriate method/action.
       controller.send(route.method)
+      # Execute the after method of this controller.
+      controller.send(:after)
       # Get from the controller what is the response for this request.
       response = controller.response
       # TODO: Review this.

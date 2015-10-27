@@ -30,6 +30,13 @@ module RackStep
     def before
     end
 
+    # RackStep will always execute this method after processing the request
+    # of to the specified method. The user may overwrite this method.
+    # This can be used to check for logging or any piece of code
+    # that must be executed after every request for this controller.
+    def after
+    end
+
   end
 
 
@@ -76,7 +83,7 @@ module RackStep::Controller::ErbRendering
 
 end
 
-# A module for controllers to add basic http authentication.
+# A module for controllers to add basic http authentication helper method.
 module RackStep::Controller::BasicHttpAuthentication
 
   def basic_access_authentication_credentials
