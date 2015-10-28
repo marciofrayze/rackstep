@@ -22,7 +22,7 @@ module RackStep
       # TODO: Is it ok to leave request as an attribute?
       @request = Rack::Request.new(env)
       @router = RackStep::Router.new
-      @settings = Hash.new
+      @settings = RackStep::GlobalConfiguration.instance.settings
 
       # Adding default routes to handle page not found (404).
       for_all_verbs_add_route('notfound', 'RackStep::ErrorController', 'not_found')
@@ -92,6 +92,22 @@ module RackStep
 
     def content_type=(value)
       header['Content-Type'] = value
+    end
+
+  end
+
+  # A singleton class with a settings hash attribute wich may be user to
+  # to store all 'global' settings (eg: database connections, etc).
+  # This settings variable will be injected into every controller
+  # by RackStep.
+  # TODO: Move to another file and think if this is the best class name.
+  class GlobalConfiguration
+    include Singleton
+
+    attr_accessor :settings
+
+    def initialize
+      @settings = Hash.new
     end
 
   end
