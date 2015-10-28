@@ -25,11 +25,11 @@ Rack itself, but there are a few others recommended gem dependancies:
 - simplecov: a simple way to generate statistics about your unit tests coverage.
 
 
-## How to
+## How to use RackStep
 
-Install the RackStep gem:
+Make sure you have ruby 2.2.3 installed (ruby --version). If you don't, we recomend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it.
 
-gem install rackstep
+Install the bundle gem if you don't have it already: gem install bundle
 
 To create a new application, you may clone one of the following repositories as a starting point example:
 
@@ -39,7 +39,9 @@ https://github.com/mfdavid/rackstep-app-template
 A minimum app example:
 https://github.com/mfdavid/rackstep-minimum-app-template
 
-Run the application using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep full app example is pre-configured to use unicorn.
+Go into the directory you cloned the project and install the dependancies by running: bundle install
+
+Start the application server using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep full app example is pre-configured to use unicorn.
 
 
 ## TODOs (some of them)
