@@ -28,6 +28,7 @@ module RackStep
       for_all_verbs_add_route('notfound', 'RackStep::ErrorController', 'not_found')
     end
 
+    # TODO: Code Climate says this method is too big.
     def process_request
       verb = request.request_method
       path = request.path
@@ -96,7 +97,7 @@ module RackStep
 
   end
 
-  # A singleton class with a settings hash attribute wich may be user to
+  # A singleton class with a settings hash attribute wich may be used to
   # to store all 'global' settings (eg: database connections, etc).
   # This settings variable will be injected into every controller
   # by RackStep.
