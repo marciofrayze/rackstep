@@ -154,7 +154,7 @@ class BeforAndAfterSettingsService < RackStep::Controller
   def before
     # Will set something to the settings, so I can check in my test if this
     # method was executed when it was supposed to.
-    settings[:before_after] = "Before"
+    settings[:before_after] = settings[:before_after].to_s + "Before"
   end
 
   # Overwriting the after method to test if it's working properly.
