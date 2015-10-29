@@ -1,7 +1,7 @@
 # This sample app will be used by ours tests to check if the RackStep is
 # doing what it was supposed to do.
 
-# Loading RackStep files
+# Loading RackStep files.
 require_relative '../../lib/rackstep'
 
 # Creating the app class and adding a few routes.
@@ -12,57 +12,44 @@ class SampleApp < RackStep::App
     super(env)
 
     # Adding something to the 'global' setting. This will be injected into all
-    # controllers.
-    settings[:test] = "This is just a settings test."
+    # controllers. The reason there is an if at the end is that this peace of
+    # code (SampleApp initialize) is executed many times (once every request)
+    # but since settings is a singleton, we only have to set it once. After the
+    # first request, the variable should be already setted. Anything that is
+    # setted in the settings hash will be persisted "forever" and is shared
+    # across multiple requests.
+    settings[:test] = "This is just a settings test." if settings[:test] == nil
 
     # Adding a route to requests made to the root of our path and delegating
     # them to the index method of Root controller.
-    add_route('GET', '', 'Root', 'index')
+    add_route('GET', '', 'SimplePlainTextService')
 
     # Route to requests made to a sample json service.
-    add_route('GET', 'myJsonService', 'Root', 'my_json_service')
+    add_route('GET', 'myJsonService', 'JsonService')
 
     # Route to requests made to a simple html page.
-    add_route('GET', 'htmlPage', 'Root', 'html_page')
+    add_route('GET', 'htmlPage', 'SimpleHtmlPage')
 
     # Route to requests made to a service for testing the 'global' settings.
-    add_route('GET', 'settingsTest', 'Root', 'settings_test_service')
+    add_route('GET', 'settingsTest', 'SimpleSettingsRetrieveService')
 
     # Route to requests made to a page that renders an ERB template.
-    add_route('GET', 'erbPage', 'Root', 'erb_page')
+    add_route('GET', 'erbPage', 'SimpleErbPage')
 
     # Route to requests made to basic access authentication page.
-    add_route('GET', 'protectedPage', 'Root', 'protected_page')
+    add_route('GET', 'protectedPage', 'BasicHttpAuthenticationProtectedPage')
 
     # Route to request made to before and after methods test service.
-    add_route('GET', 'beforeAndAfter', 'Root', 'before_and_after')
+    add_route('GET', 'beforeAndAfter', 'BeforAndAfterSettingsService')
 
   end
 
 end
 
-# Creating the controller that will process the requests.
-class Root < RackStep::Controller
-
-  include RackStep::Controller::HtmlRendering
-  include RackStep::Controller::ErbRendering
-  include RackStep::Controller::BasicHttpAuthentication
-
-  # Overwriting the before method to test if it's working properly.
-  def before
-    # Will add something to the settings, so I can check in my test if this
-    # method was executed when it was supposed to.
-    settings[:before_after] = "Before"
-  end
-
-  # Overwriting the after method to test if it's working properly.
-  def after
-    # Will add something to the settings, so I can check in my test if this
-    # method was executed when it was supposed to.
-    settings[:before_after] = settings[:before_after].to_s + "After"
-  end
-
-  def index
+# Creating the controller that will process the requests for testing a very
+# simple text/plain response.
+class SimplePlainTextService < RackStep::Controller
+  def process_request
     # RackStep was created mainly to be used for microservices and single page
     # applications, so by default it will set the content type of the response
     # to JSON, but for this example, let's chance that to plain txt.
@@ -71,8 +58,12 @@ class Root < RackStep::Controller
     # Let's set as the body of the response a simple string of text.
     response.body = 'Welcome to the RackStep Sample App.'
   end
+end
 
-  def my_json_service
+# Creating the controller that will process the requests for testing a
+# simulated json service.
+class JsonService < RackStep::Controller
+  def process_request
     # Creating a Hash with some info that we will return to the user as JSON
     user = Hash.new
     user['name'] = 'John Doe'
@@ -81,8 +72,16 @@ class Root < RackStep::Controller
 
     response.body = user.to_json
   end
+end
 
-  def html_page
+
+# Creating the controller that will process the requests for testing a simple
+# html page.
+class SimpleHtmlPage < RackStep::Controller
+
+  include RackStep::Controller::HtmlRendering
+
+  def process_request
     # Overwriting default directory (don't wanna create the whole default
     # folders structure).
     pages_directory = 'test/util/pages'
@@ -90,16 +89,27 @@ class Root < RackStep::Controller
     response.body = render_page('justatestpage', pages_directory)
     response.content_type = 'text/html'
   end
+end
 
-  def settings_test_service
+
+# Creating the controller that will process the requests for testing the 'glboal'
+# settings.
+class SimpleSettingsRetrieveService < RackStep::Controller
+  def process_request
     # At the initialize of sampleApp we set a :config. Lets retrieve it and
     # send back as the body of our response.
-
     response.body = settings[:test]
   end
+end
+
+# Creating the controller that will process the requests for testing an ERB
+# template page.
+class SimpleErbPage < RackStep::Controller
+
+  include RackStep::Controller::ErbRendering
 
   # Let's render an ERB template to test the RackStep::ErbRendering module.
-  def erb_page
+  def process_request
     erb_templates_directory = 'test/util/pages'
 
     # Every attribute should be available for the template. In our case, it is
@@ -108,16 +118,16 @@ class Root < RackStep::Controller
     response.body = render_erb('justatesttemplate', erb_templates_directory)
     response.content_type = 'text/html'
   end
+end
 
-  def before_and_after
-    # This service was created to test if the before and after execution was
-    # working properly. The sample app will set a variable at the 'global'
-    # settings hash (settings[:before_after]). Here I will return the content
-    # that variable.
-    settings[:before_after] = settings[:before_after].to_s + "During"
-  end
 
-  def protected_page
+# Creating the controller that will process the requests for testing basic http
+# authentication.
+class BasicHttpAuthenticationProtectedPage < RackStep::Controller
+
+  include RackStep::Controller::BasicHttpAuthentication
+
+  def process_request
     response.content_type = 'text/html'
 
     credentials = basic_access_authentication_credentials
@@ -134,4 +144,31 @@ class Root < RackStep::Controller
     end
   end
 
+end
+
+
+# Creating the controller that will process the requests for testing if the
+# before and after methods are executed as expected.
+class BeforAndAfterSettingsService < RackStep::Controller
+  # Overwriting the before method to test if it's working properly.
+  def before
+    # Will set something to the settings, so I can check in my test if this
+    # method was executed when it was supposed to.
+    settings[:before_after] = "Before"
+  end
+
+  # Overwriting the after method to test if it's working properly.
+  def after
+    # Will add something to the settings, so I can check in my test if this
+    # method was executed when it was supposed to.
+    settings[:before_after] = settings[:before_after].to_s + "After"
+  end
+
+  def process_request
+    # This service was created to test if the before and after execution was
+    # working properly. The sample app will set a variable at the 'global'
+    # settings hash (settings[:before_after]). Here I will return the content
+    # that variable.
+    settings[:before_after] = settings[:before_after].to_s + "During"
+  end
 end

@@ -11,9 +11,10 @@ module RackStep
     # The Rack::Response object that will be delivered to the user.
     attr_accessor :response
 
-    # The 'global' app settings will be injected here. This may contain
-    # references to things that should be initialize only once during the app
-    # start (eg: database connection).
+    # The 'global' app settings will be injected here. This hash variable is
+    # initialized only once (singleton) and may contain references to things
+    # that should be initialize only once during the app start (eg: database
+    # connection).
     attr_accessor :settings
 
     def initialize
@@ -23,17 +24,36 @@ module RackStep
       @response.status = 200
     end
 
+    # Once the applciation receives a new request, the router will decide wich
+    # controller should process that request and will execute this method for
+    # the chosen controller. So this is the most important method of this class
+    # and every controller should overwrite it to implement it's business
+    # logic.
+    def process_request
+    end
+
+    # RackStep will always execute this method after processing the request
+    # of to the specified controller. The user may overwrite this method.
+    # This can be used to check for logging or any piece of code
+    # that must be executed after every request for this controller.
+    # This may be usefull if the user wants to create an abstract controllers.
+    # TODO: Is this really necessary?
+    def after
+    end
+
     # RackStep will always execute this method before delegating the request
-    # processing to the specified method. The user may overwrite this method.
-    # This can be used to check for access authorization or any piece of code
-    # that must be executed before every request for this controller.
+    # processing to the specified controller. The user may overwrite this method.
+    # This may be usefull if the user wants to create an abstract controllers.
+    # TODO: Is this really necessary?
     def before
     end
 
     # RackStep will always execute this method after processing the request
-    # of to the specified method. The user may overwrite this method.
+    # of to the specified controller. The user may overwrite this method.
     # This can be used to check for logging or any piece of code
     # that must be executed after every request for this controller.
+    # This may be usefull if the user wants to create an abstract controllers.
+    # TODO: Is this really necessary?
     def after
     end
 
@@ -41,10 +61,11 @@ module RackStep
 
 
   # This controller will handle error the error "page not found". The user may
-  # overwrite this by creating new router to 'notfound'.
-  class ErrorController < RackStep::Controller
+  # overwrite this by creating new route to 'notfound'.
+  # TODO: Find a better name for this class.
+  class NotFoundController < RackStep::Controller
 
-    def not_found
+    def process_request
       @response.body = '404 - Page not found'
       @response.content_type = 'text/plain'
       @response.status  = 404

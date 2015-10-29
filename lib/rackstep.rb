@@ -25,7 +25,7 @@ module RackStep
       @settings = RackStep::GlobalConfiguration.instance.settings
 
       # Adding default routes to handle page not found (404).
-      for_all_verbs_add_route('notfound', 'RackStep::ErrorController', 'not_found')
+      for_all_verbs_add_route('notfound', 'RackStep::NotFoundController')
     end
 
     # TODO: Code Climate says this method is too big.
@@ -46,7 +46,7 @@ module RackStep
       # Execute the before method of this controller.
       controller.send(:before)
       # Execute the apropriate method/action.
-      controller.send(route.method)
+      controller.send(:process_request)
       # Execute the after method of this controller.
       controller.send(:after)
       # Get from the controller what is the response for this request.
@@ -57,16 +57,16 @@ module RackStep
 
     # Adds new routes to the application, one for each possible http verb (GET,
     # POST, DELETE and PUT).
-    def for_all_verbs_add_route(path, controller, method)
-      @router.add_route('GET', path, controller, method)
-      @router.add_route('POST', path, controller, method)
-      @router.add_route('DELETE', path, controller, method)
-      @router.add_route('PUT', path, controller, method)
+    def for_all_verbs_add_route(path, controller)
+      @router.add_route('GET', path, controller)
+      @router.add_route('POST', path, controller)
+      @router.add_route('DELETE', path, controller)
+      @router.add_route('PUT', path, controller)
     end
 
     # Adds a new route to the application.
-    def add_route(verb, path, controller, method)
-      @router.add_route(verb, path, controller, method)
+    def add_route(verb, path, controller)
+      @router.add_route(verb, path, controller)
     end
 
   end
