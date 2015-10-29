@@ -4,6 +4,7 @@
 module RackStep
 
   class Router
+    include Singleton
 
     # Will store all the possible routes. By default it's empty and should be
     # populated by the application (RackStep will add a 404 route, the others
@@ -14,7 +15,7 @@ module RackStep
       @routes = Hash.new
     end
 
-    def add_route(verb, path, controller)
+    def add_route(verb, path, controller)     
       route = Route.new(verb, path, controller)
       routes[route.id] = route
     end

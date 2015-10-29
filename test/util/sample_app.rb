@@ -7,6 +7,28 @@ require_relative '../../lib/rackstep'
 # Creating the app class and adding a few routes.
 class SampleApp < RackStep::App
 
+  # Adding a route to requests made to the root of our path and delegating
+  # them to the index method of Root controller.
+  add_route('GET', '', 'SimplePlainTextService')
+
+  # Route to requests made to a sample json service.
+  add_route('GET', 'myJsonService', 'JsonService')
+
+  # Route to requests made to a simple html page.
+  add_route('GET', 'htmlPage', 'SimpleHtmlPage')
+
+  # Route to requests made to a service for testing the 'global' settings.
+  add_route('GET', 'settingsTest', 'SimpleSettingsRetrieveService')
+
+  # Route to requests made to a page that renders an ERB template.
+  add_route('GET', 'erbPage', 'SimpleErbPage')
+
+  # Route to requests made to basic access authentication page.
+  add_route('GET', 'protectedPage', 'BasicHttpAuthenticationProtectedPage')
+
+  # Route to request made to before and after methods test service.
+  add_route('GET', 'beforeAndAfter', 'BeforAndAfterSettingsService')
+  
   def initialize(env)
     # Must call super first, to initialize all the necessary attributes.
     super(env)
@@ -19,28 +41,6 @@ class SampleApp < RackStep::App
     # setted in the settings hash will be persisted "forever" and is shared
     # across multiple requests.
     settings[:test] = "This is just a settings test." if settings[:test] == nil
-
-    # Adding a route to requests made to the root of our path and delegating
-    # them to the index method of Root controller.
-    add_route('GET', '', 'SimplePlainTextService')
-
-    # Route to requests made to a sample json service.
-    add_route('GET', 'myJsonService', 'JsonService')
-
-    # Route to requests made to a simple html page.
-    add_route('GET', 'htmlPage', 'SimpleHtmlPage')
-
-    # Route to requests made to a service for testing the 'global' settings.
-    add_route('GET', 'settingsTest', 'SimpleSettingsRetrieveService')
-
-    # Route to requests made to a page that renders an ERB template.
-    add_route('GET', 'erbPage', 'SimpleErbPage')
-
-    # Route to requests made to basic access authentication page.
-    add_route('GET', 'protectedPage', 'BasicHttpAuthenticationProtectedPage')
-
-    # Route to request made to before and after methods test service.
-    add_route('GET', 'beforeAndAfter', 'BeforAndAfterSettingsService')
 
   end
 

@@ -5,13 +5,18 @@ module RackStep
 
   class App
 
-    # We will store the request and create a router in this class initializer.
-    attr_reader :request, :router
+    # We will store the request in this class initializer.
+    attr_reader :request
 
     # Settings is a hash that will be injected into the controller. This hash
     # may contain "global" settings, like a connection to database, and other
     # things that should be initiaized only once while the app is starting.
     attr_accessor :settings
+
+    # Router is a singleton that will store all the registred routes.
+    def router
+      Router.instance
+    end
 
     # Static method called from config.ru ("run App").
     def self.call(env)
@@ -21,11 +26,10 @@ module RackStep
     def initialize(env)
       # TODO: Is it ok to leave request as an attribute?
       @request = Rack::Request.new(env)
-      @router = RackStep::Router.new
       @settings = RackStep::GlobalConfiguration.instance.settings
 
       # Adding default routes to handle page not found (404).
-      for_all_verbs_add_route('notfound', 'RackStep::NotFoundController')
+      add_route_for_all_verbs('notfound', 'RackStep::NotFoundController')
     end
 
     # TODO: Code Climate says this method is too big.
@@ -57,16 +61,17 @@ module RackStep
 
     # Adds new routes to the application, one for each possible http verb (GET,
     # POST, DELETE and PUT).
-    def for_all_verbs_add_route(path, controller)
-      @router.add_route('GET', path, controller)
-      @router.add_route('POST', path, controller)
-      @router.add_route('DELETE', path, controller)
-      @router.add_route('PUT', path, controller)
+    def add_route_for_all_verbs(path, controller)
+      router.add_route('GET', path, controller)
+      router.add_route('POST', path, controller)
+      router.add_route('DELETE', path, controller)
+      router.add_route('PUT', path, controller)
     end
 
     # Adds a new route to the application.
-    def add_route(verb, path, controller)
-      @router.add_route(verb, path, controller)
+    def self.add_route(verb, path, controller)
+      router = Router.instance
+      router.add_route(verb, path, controller)
     end
 
   end
