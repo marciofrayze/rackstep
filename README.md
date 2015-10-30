@@ -45,6 +45,11 @@ Go into the directory you cloned the project and install the dependancies by run
 Start the application server using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep full app example is pre-configured to use unicorn.
 
 
+## In the wild (who is using it?)
+
+RackStep is still in very early stage of development and testing. Right now there is only one website that was build using it: [Ninirc.com](http://ninirc.com)
+
+
 ## TODOs (some of them)
 
 - use RDoc or YARD for documentation.
