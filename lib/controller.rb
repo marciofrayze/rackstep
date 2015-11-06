@@ -24,21 +24,12 @@ module RackStep
       @response.status = 200
     end
 
-    # Once the applciation receives a new request, the router will decide wich
+    # Once the application receives a new request, the router will decide wich
     # controller should process that request and will execute this method for
     # the chosen controller. So this is the most important method of this class
     # and every controller should overwrite it to implement it's business
     # logic.
     def process_request
-    end
-
-    # RackStep will always execute this method after processing the request
-    # of to the specified controller. The user may overwrite this method.
-    # This can be used to check for logging or any piece of code
-    # that must be executed after every request for this controller.
-    # This may be usefull if the user wants to create an abstract controllers.
-    # TODO: Is this really necessary?
-    def after
     end
 
     # RackStep will always execute this method before delegating the request
