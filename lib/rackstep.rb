@@ -1,5 +1,9 @@
-require_relative 'controller'
+require 'rack'
+require_relative 'response'
+require_relative 'route'
 require_relative 'router'
+require_relative 'global_configuration'
+require_relative 'controller'
 
 module RackStep
 
@@ -29,7 +33,7 @@ module RackStep
       @settings = RackStep::GlobalConfiguration.instance.settings
 
       # Adding default routes to handle page not found (404).
-      add_route_for_all_verbs('notfound', 'RackStep::NotFoundController')
+      router.add_route_for_all_verbs('notfound', 'RackStep::NotFoundController')
     end
 
     # TODO: Code Climate says this method is too big.
@@ -59,61 +63,10 @@ module RackStep
       return response
     end
 
-    # Adds new routes to the application, one for each possible http verb (GET,
-    # POST, DELETE and PUT).
-    def add_route_for_all_verbs(path, controller)
-      router.add_route('GET', path, controller)
-      router.add_route('POST', path, controller)
-      router.add_route('DELETE', path, controller)
-      router.add_route('PUT', path, controller)
-    end
-
     # Adds a new route to the application.
     def self.add_route(verb, path, controller)
       router = Router.instance
       router.add_route(verb, path, controller)
-    end
-
-  end
-
-  # Let's extend the Rack Response class to add a few methods to make the life
-  # of the developer a little easier.
-  class Response < Rack::Response
-
-    # The original body= method of Rack::Response expects an array. In RackStep
-    # the user may set it as a String and we will convert it to array if
-    # necessary.
-    def body=(value)
-      if value.is_a?(String)
-        # Convert it to an array.
-        value = [value]
-      end
-
-      super(value)
-    end
-
-    def content_type
-      header['Content-Type']
-    end
-
-    def content_type=(value)
-      header['Content-Type'] = value
-    end
-
-  end
-
-  # A singleton class with a settings hash attribute wich may be used to
-  # to store all 'global' settings (eg: database connections, etc).
-  # This settings variable will be injected into every controller
-  # by RackStep.
-  # TODO: Move to another file and think if this is the best class name.
-  class GlobalConfiguration
-    include Singleton
-
-    attr_accessor :settings
-
-    def initialize
-      @settings = Hash.new
     end
 
   end

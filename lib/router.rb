@@ -1,9 +1,11 @@
 # Router is one of the fundamental parts of RackStep. It's the router that tell
 # us, given a path and a http verb, what controller should handle the business
 # logic of the request.
+
 module RackStep
 
   class Router
+    
     include Singleton
 
     # Will store all the possible routes. By default it's empty and should be
@@ -38,24 +40,13 @@ module RackStep
       return route
     end
 
-  end
-
-  # Represents a single route. The verb can be 'GET', 'PUT', 'POST' or 'DELETE'.
-  # The path is a string with something like 'users', the controller is the
-  # name of the class that will process this type of request.
-  class Route
-
-    attr_accessor :verb, :path, :controller
-
-    def initialize(verb, path, controller)
-      @verb = verb
-      @path = path
-      @controller = controller
-    end
-
-    # Unique id of the route (verb + path). Eg: 'GETuser'.
-    def id
-      verb + path
+    # Adds new routes to the application, one for each possible http verb (GET,
+    # POST, DELETE and PUT).
+    def add_route_for_all_verbs(path, controller)
+      add_route('GET', path, controller)
+      add_route('POST', path, controller)
+      add_route('DELETE', path, controller)
+      add_route('PUT', path, controller)
     end
 
   end
