@@ -31,7 +31,7 @@ require 'rack/test'
 # Loading the sample App
 require_relative 'sample_app'
 
-# TODO: Move this to another place?
+# TODO: Move this to another file?
 # Extending the Minitest framework a new assertion method (contains).
 module Minitest::Assertions
   def assert_contains(exp_substr, obj, msg=nil)
@@ -41,8 +41,8 @@ module Minitest::Assertions
   end
 end
 
-# TODO: Move this to another place?
-# Used to test basic http authentication
+# TODO: Move this to another file?
+# Helper to test basic http authentication.
 def encode_credentials(username, password)
   "Basic " + Base64.encode64("#{username}:#{password}")
 end

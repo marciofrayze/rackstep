@@ -46,6 +46,7 @@ class SampleApp < RackStep::App
 
 end
 
+
 # Creating the controller that will process the requests for testing a very
 # simple text/plain response.
 class SimplePlainTextService < RackStep::Controller
@@ -59,6 +60,7 @@ class SimplePlainTextService < RackStep::Controller
     response.body = 'Welcome to the RackStep Sample App.'
   end
 end
+
 
 # Creating the controller that will process the requests for testing a
 # simulated json service.
@@ -101,6 +103,7 @@ class SimpleSettingsRetrieveService < RackStep::Controller
     response.body = settings[:test]
   end
 end
+
 
 # Creating the controller that will process the requests for testing an ERB
 # template page.

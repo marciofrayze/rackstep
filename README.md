@@ -7,11 +7,13 @@ Main goals are:
 - keep the source code small.
 - implement only the necessary; no overcomplication.
 - allow easy implementation of microservices and single-page application (SPA).
+- use a pure object oriented approach, avoiding DSLs  and configuration files.
 
 
 ## Status
-[![Gem Version](https://badge.fury.io/rb/rackstep.svg)](https://badge.fury.io/rb/rackstep)
 [![Travis CI](https://api.travis-ci.org/mfdavid/rackstep.svg)](https://travis-ci.org/mfdavid/rackstep)
+[![Gem Version](https://badge.fury.io/rb/rackstep.svg)](https://badge.fury.io/rb/rackstep)
+[![Downloads](http://ruby-gem-downloads-badge.herokuapp.com/rackstep?type=total&color=brightgreen)](https://rubygems.org/gems/rackstep)
 [![Code Climate](https://codeclimate.com/github/mfdavid/rackstep/badges/gpa.svg)](https://codeclimate.com/github/mfdavid/rackstep)
 [![Ich CI](http://inch-ci.org/github/mfdavid/rackstep.png)](http://inch-ci.org/github/mfdavid/rackstep)
 [![Gemnasium](https://gemnasium.com/mfdavid/rackstep.svg)](https://gemnasium.com/mfdavid/rackstep)
@@ -42,6 +44,11 @@ https://github.com/mfdavid/rackstep-minimum-app-template
 Go into the directory you cloned the project and install the dependancies by running: bundle install
 
 Start the application server using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep full app example is pre-configured to use unicorn.
+
+
+## In the wild (who is using it?)
+
+RackStep is still in very early stage of development and testing. Right now there is only one website that was build using it: [Ninirc.com](http://ninirc.com)
 
 
 ## TODOs (some of them)
