@@ -51,7 +51,6 @@ end
 
 # This is the default controller that will handle the "page not found" (404). 
 # The user may overwrite this by creating new route to 'notfound'.
-# TODO: Find a better name and place for this class.
 class RackStep::NotFoundController < RackStep::Controller
 
   def process_request

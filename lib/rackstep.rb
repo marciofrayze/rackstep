@@ -1,3 +1,7 @@
+# This is where we define an abstract class wich defines
+# the basics of a RackStep app. This class MUST be
+# extended.
+
 require 'rack'
 require_relative 'response'
 require_relative 'route'
@@ -28,7 +32,6 @@ module RackStep
     end
 
     def initialize(env)
-      # TODO: Is it ok to leave request as an attribute?
       @request = Rack::Request.new(env)
       @settings = RackStep::GlobalConfiguration.instance.settings
 
@@ -63,7 +66,8 @@ module RackStep
       return response
     end
 
-    # Adds a new route to the application.
+    # This method was created so the user may add routes directly, but it 
+    # delegates this to the router singleton class.
     def self.add_route(verb, path, controller)
       router = Router.instance
       router.add_route(verb, path, controller)

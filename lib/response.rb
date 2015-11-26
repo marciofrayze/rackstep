@@ -1,5 +1,6 @@
 # Let's extend the Rack Response class to add a few methods to make the life
 # of the developer a little easier.
+
 module RackStep
 
   class Response < Rack::Response
@@ -16,10 +17,12 @@ module RackStep
       super(value)
     end
 
+    # Just a helper to get the content type from the response header.
     def content_type
       header['Content-Type']
     end
 
+    # Just a helper to set the content type on the response header.
     def content_type=(value)
       header['Content-Type'] = value
     end
