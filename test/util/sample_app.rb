@@ -8,7 +8,7 @@ require_relative '../../lib/rackstep'
 class SampleApp < RackStep::App
 
   # Adding a route to requests made to the root of our path and delegating
-  # them to the index method of Root controller.
+  # them to Root controller.
   add_route('GET', '', 'SimplePlainTextService')
 
   # Route to requests made to a sample json service.
