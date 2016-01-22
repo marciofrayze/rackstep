@@ -14,7 +14,7 @@
         @controller = controller
       end
 
-      # Unique id of the route (verb + path). Eg: 'GETuser'.
+      # Unique id (String) of the route (verb + path). Eg: 'GETuser'.
       def id
         verb + path
       end

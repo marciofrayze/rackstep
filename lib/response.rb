@@ -1,4 +1,4 @@
-# Let's extend the Rack Response class to add a few methods to make the life
+# Extending the Rack::Response class to add a few methods to make the life
 # of the developer a little easier.
 
 module RackStep
