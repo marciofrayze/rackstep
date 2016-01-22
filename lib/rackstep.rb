@@ -66,8 +66,8 @@ module RackStep
       return response
     end
 
-    # This method was created so the user may add routes directly, but it 
-    # delegates this to the router singleton class.
+    # This method was created to make it easier for the user to add routes, but it 
+    # will delegate to the router singleton class.
     def self.add_route(verb, path, controller)
       router = Router.instance
       router.add_route(verb, path, controller)
