@@ -59,14 +59,6 @@ Open coverage/index.html to see the results.
 RackStep is still in very early stage of development and testing. Right now there is only one website that was build using it: [Ninirc.com](http://ninirc.com)
 
 
-## TODOs (some of them)
-
-- use RDoc or YARD for documentation.
-- create more tests.
-- add some performance tests and do some optimizations.
-- solve all the TODOs listed around the source code.
-
-
 ## Author
 
 RackStep is developed by Marcio Frayze David - mfdavid@gmail.com.
