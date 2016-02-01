@@ -13,12 +13,12 @@ module RackStep
 
   class App
 
-    # We will store the request in this class initializer.
+    # Will store the received request which will be injected into the user controllers.
     attr_reader :request
 
-    # Settings is a hash that will be injected into the controller. This hash
-    # may contain "global" settings, like a connection to database, and other
-    # things that should be initiaized only once while the app is starting.
+    # A hash that will be injected into the controller. This hash may contain
+    # "global" settings, like a connection to database and other things that 
+    # should be initiaized only once while the app is starting.
     attr_accessor :settings
 
     # Router is a singleton that will store all the registred routes.
