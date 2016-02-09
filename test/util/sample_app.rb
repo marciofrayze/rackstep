@@ -8,7 +8,7 @@ require_relative '../../lib/rackstep'
 class SampleApp < RackStep::App
 
   # Adding a route to requests made to the root of our path and delegating
-  # them to the index method of Root controller.
+  # them to SimplePlainTextService controller.
   add_route('GET', '', 'SimplePlainTextService')
 
   # Route to requests made to a sample json service.
@@ -30,6 +30,7 @@ class SampleApp < RackStep::App
   add_route('GET', 'beforeAndAfter', 'BeforAndAfterSettingsService')
   
   def initialize(env)
+
     # Must call super first, to initialize all the necessary attributes.
     super(env)
 
@@ -63,7 +64,7 @@ end
 
 
 # Creating the controller that will process the requests for testing a
-# simulated json service.
+# simulated JSON service.
 class JsonService < RackStep::Controller
   def process_request
     # Creating a Hash with some info that we will return to the user as JSON
@@ -94,11 +95,11 @@ class SimpleHtmlPage < RackStep::Controller
 end
 
 
-# Creating the controller that will process the requests for testing the 'glboal'
+# Creating the controller that will process the requests for testing the 'global'
 # settings.
 class SimpleSettingsRetrieveService < RackStep::Controller
   def process_request
-    # At the initialize of sampleApp we set a :config. Lets retrieve it and
+    # At the initialize of SampleApp we set a :config. Lets retrieve it and
     # send back as the body of our response.
     response.body = settings[:test]
   end
@@ -113,12 +114,18 @@ class SimpleErbPage < RackStep::Controller
 
   # Let's render an ERB template to test the RackStep::ErbRendering module.
   def process_request
+    # Overwriting default directory (don't wanna create the whole default
+    # folders structure).
     erb_templates_directory = 'test/util/pages'
 
     # Every attribute should be available for the template. In our case, it is
     # expecting to find the following attribute:
     @templateAttributeTest = 'This is the content of the attribute.'
+
+    # Rendering the template.
     response.body = render_erb('justatesttemplate', erb_templates_directory)
+
+    # Setting this request content type as html.
     response.content_type = 'text/html'
   end
 end

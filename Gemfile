@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.3"
+ruby "2.3.0"
 
 group :test do
   gem 'rake'      # Used for unit testing execution.

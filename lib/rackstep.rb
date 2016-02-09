@@ -1,3 +1,7 @@
+# This is where we define an abstract class wich defines
+# the basics of a RackStep app. This class MUST be
+# extended.
+
 require 'rack'
 require_relative 'response'
 require_relative 'route'
@@ -9,12 +13,12 @@ module RackStep
 
   class App
 
-    # We will store the request in this class initializer.
+    # Will store the received request which will be injected into the user controllers.
     attr_reader :request
 
-    # Settings is a hash that will be injected into the controller. This hash
-    # may contain "global" settings, like a connection to database, and other
-    # things that should be initiaized only once while the app is starting.
+    # A hash that will be injected into the controller. This hash may contain
+    # "global" settings, like a connection to database and other things that 
+    # should be initiaized only once while the app is starting.
     attr_accessor :settings
 
     # Router is a singleton that will store all the registred routes.
@@ -28,7 +32,6 @@ module RackStep
     end
 
     def initialize(env)
-      # TODO: Is it ok to leave request as an attribute?
       @request = Rack::Request.new(env)
       @settings = RackStep::GlobalConfiguration.instance.settings
 
@@ -63,7 +66,8 @@ module RackStep
       return response
     end
 
-    # Adds a new route to the application.
+    # This method was created to make it easier for the user to add routes, but it 
+    # will delegate to the router singleton class.
     def self.add_route(verb, path, controller)
       router = Router.instance
       router.add_route(verb, path, controller)
