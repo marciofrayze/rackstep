@@ -1,4 +1,4 @@
-# This is where we define an abstract class wich defines
+# This is where we define an abstract class which defines
 # the basics of a RackStep app. This class MUST be
 # extended.
 
