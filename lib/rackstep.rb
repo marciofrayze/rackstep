@@ -1,6 +1,5 @@
-# This is where we define an abstract class wich defines
-# the basics of a RackStep app. This class MUST be
-# extended.
+# This is where we define an abstract class with the base of 
+# a RackStep app. This class MUST be extended by the user.
 
 require 'rack'
 require_relative 'response'
@@ -13,12 +12,12 @@ module RackStep
 
   class App
 
-    # We will store the request in this class initializer.
+    # Will store the received request which will be injected into the user controllers.
     attr_reader :request
 
-    # Settings is a hash that will be injected into the controller. This hash
-    # may contain "global" settings, like a connection to database, and other
-    # things that should be initiaized only once while the app is starting.
+    # A hash that will be injected into the controller. This hash may contain
+    # "global" settings, like a connection to database and other things that 
+    # should be initiaized only once while the app is starting.
     attr_accessor :settings
 
     # Router is a singleton that will store all the registred routes.
@@ -44,9 +43,9 @@ module RackStep
       verb = request.request_method
       path = request.path
 
-      # In RackStep, each request is processed by a method of a controller. The
-      # router is responsable to find, based on the given path and http verb,
-      # the apropriate controller and method to handle the request.
+      # In RackStep, each request is processed by a controller. The router 
+      # is responsable to find, based on the given path and http verb,
+      # the apropriate controller to handle the request.
       route = router.find_route_for(path, verb)
       # Initialize the correspondent controller.
       controller = Object.const_get(route.controller).new
@@ -66,8 +65,8 @@ module RackStep
       return response
     end
 
-    # This method was created so the user may add routes directly, but it 
-    # delegates this to the router singleton class.
+    # This method was created to make it easier for the user to add routes, but it 
+    # will delegate to the router singleton class.
     def self.add_route(verb, path, controller)
       router = Router.instance
       router.add_route(verb, path, controller)
