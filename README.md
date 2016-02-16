@@ -11,6 +11,7 @@ Main goals are:
 
 
 ## Status
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/mfdavid/rackstep)
 [![Travis CI](https://api.travis-ci.org/mfdavid/rackstep.svg)](https://travis-ci.org/mfdavid/rackstep)
 [![Gem Version](https://badge.fury.io/rb/rackstep.svg)](https://badge.fury.io/rb/rackstep)
 [![Downloads](http://ruby-gem-downloads-badge.herokuapp.com/rackstep?type=total&color=brightgreen)](https://rubygems.org/gems/rackstep)
@@ -29,7 +30,7 @@ Rack itself, but there are a few others recommended gem dependancies:
 
 ## How to use RackStep
 
-Make sure you have ruby 2.3.0 installed (ruby --version). If you don't, we recomend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it.
+Make sure you have ruby 2.3.0 installed (ruby --version). If you don't, we recomend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it. RackStep may work with older ruby implementations but we always develop and test with the latest Ruby MRI stable version.
 
 Install the bundle gem if you don't have it already: gem install bundle
 
