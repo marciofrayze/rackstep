@@ -145,8 +145,8 @@ class BasicHttpAuthenticationProtectedPage < RackStep::Controller
       # TODO: Make life easier for the app developer.
       response.status = 401
       response.body = 'Access Denied'
-      # In a real life application you must set this header so the browser
-      # knows that it should ask for the username and password.
+      # In a real life application you must set this header so the browser knows 
+      # that it should ask for the username and password.
       response.headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
     else
       # The credentials are fine! Let's show the page content.
@@ -169,16 +169,16 @@ class BeforAndAfterSettingsService < RackStep::Controller
 
   # Overwriting the after method to test if it's working properly.
   def after
-    # Will add something to the settings, so I can check in my test if this
-    # method was executed when it was supposed to.
+    # Will add something to the settings, so we can check in this method is 
+    # executed when it was supposed to.
     settings[:before_after] = settings[:before_after].to_s + "After"
   end
 
   def process_request
-    # This service was created to test if the before and after execution was
+    # This service was created to test if the before and after execution are
     # working properly. The sample app will set a variable at the 'global'
-    # settings hash (settings[:before_after]). Here I will return the content
-    # that variable.
+    # settings hash (settings[:before_after]). Here we will return the content
+    # of that variable.
     settings[:before_after] = settings[:before_after].to_s + "During"
   end
 end
