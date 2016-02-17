@@ -9,6 +9,9 @@ Main goals are:
 - allow easy implementation of microservices.
 - use a pure object-oriented approach, avoiding DSLs and configuration files.
 
+
+## Status
+
 [![Travis CI](https://api.travis-ci.org/mfdavid/rackstep.svg)](https://travis-ci.org/mfdavid/rackstep)
 [![Code Climate](https://codeclimate.com/github/mfdavid/rackstep/badges/gpa.svg)](https://codeclimate.com/github/mfdavid/rackstep)
 [![Ich CI](http://inch-ci.org/github/mfdavid/rackstep.png)](http://inch-ci.org/github/mfdavid/rackstep)
