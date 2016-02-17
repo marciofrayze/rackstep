@@ -7,7 +7,7 @@ Main goals are:
 - keep the source code small.
 - implement only the necessary; no overcomplication.
 - allow easy implementation of microservices.
-- use a pure object oriented approach, avoiding DSLs  and configuration files.
+- use a pure object-oriented approach, avoiding DSLs and configuration files.
 
 
 ## Status
@@ -23,7 +23,7 @@ Main goals are:
 ## Dependancies
 
 RackStep is developed and tested with Ruby 2.3.0. The only hard dependency is
-Rack itself, but there are a few others recommended gem dependancies:
+Rack gem itself, but there are a few others recommended gems:
 - unicorn: fast rack-compatible server that can be used for production.
 - simplecov: a simple way to generate statistics about your unit tests coverage.
 
@@ -47,7 +47,7 @@ Go into the directory you cloned the project and install the dependancies by run
 Start the application server using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep full app example is pre-configured to use unicorn.
 
 
-## Running the tests
+## Running tests
 
 In the main folder of the projet, execute:
 rake test
