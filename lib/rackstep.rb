@@ -1,5 +1,8 @@
-# This is where we define an abstract class with the base of 
-# a RackStep app. This class MUST be extended by the user.
+# In this file you will find the RackStep::App class.
+# This is one of the fundamental parts of the framework and
+# is responsable for the whole orchestration.
+# To use RackStep one of the first things you will have to
+# do is extend this class.
 
 require 'rack'
 require_relative 'response'
@@ -10,6 +13,8 @@ require_relative 'controller'
 
 module RackStep
 
+  # Abstract class with the base of a RackStep app. 
+  # This class MUST be extended by the user.
   class App
 
     # Will store the received request which will be injected into the user controllers.
@@ -30,6 +35,7 @@ module RackStep
       new(env).process_request
     end
 
+    # Initialize all instance variables and add a default "not found" route.
     def initialize(env)
       @request = Rack::Request.new(env)
       @settings = RackStep::GlobalConfiguration.instance.settings
