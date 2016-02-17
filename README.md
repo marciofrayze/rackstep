@@ -6,7 +6,7 @@ Main goals are:
 - be as simple as possible.
 - keep the source code small.
 - implement only the necessary; no overcomplication.
-- allow easy implementation of microservices and single-page application (SPA).
+- allow easy implementation of microservices.
 - use a pure object oriented approach, avoiding DSLs  and configuration files.
 
 
