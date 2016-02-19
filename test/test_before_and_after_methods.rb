@@ -3,15 +3,7 @@
 
 require 'test_helper'
 
-class ControllerBeforeAndAfterExecutionTest < MiniTest::Test
-
-  # Including rack test methods to allow use of assert_*.
-  include Rack::Test::Methods
-
-  # Setting up a Mock to simulate the requests.
-  def setup
-    @requester = Rack::MockRequest.new(SampleApp)
-  end
+class ControllerBeforeAndAfterExecutionTest < RackStepTest
 
   # Test if rackstep is running the before and after methods as expected.
   # In this test we will instantiate and run a SampleApp ourselves (will not

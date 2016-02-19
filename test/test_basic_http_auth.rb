@@ -1,25 +1,15 @@
-# Testing RackStep framework. In this file we will test all valid ways of
-# declaring routes.
+# Testing RackStep framework.
+# Testing if basic access authentication is working properly.
 
-require 'test_helper'
-require 'base64'
+require_relative 'util/rackstep_test'
 
-class BasicAuthRoutesTest < MiniTest::Test
+class BasicAuthRoutesTest < RackStepTest
 
-  # Including rack test methods to allow use of assert_*.
-  include Rack::Test::Methods
-
-  # Setting up a Mock to simulate the requests.
-  def setup
-    @requester = Rack::MockRequest.new(SampleApp)
-  end
-
-  # Test if the protectedPage route is returning the expected content. We want
-  # to test if  basic access authentication is working properly.
   # Testing invalid credentials (none).
   def test_access_to_protected_page_passing_no_credentials
     # Requesting the protectedPage of the application.
-    request = @requester.get URI.escape('/protectedPage')
+    uri = URI.escape('/protectedPage')
+    request = @requester.get(uri)
     # The response should be Unauthorized (401).
     assert_equal 401, request.status
     # Content type should be HTML
@@ -31,8 +21,6 @@ class BasicAuthRoutesTest < MiniTest::Test
     assert_contains expected_body, request.body
   end
 
-  # Test if the protectedPage route is returning the expected content. We want
-  # to test if  basic access authentication is working properly.
   # Testing valid credentials.
   def test_access_to_protected_page_passing_right_credentials
     # Requesting the protectedPage of the application.
@@ -50,8 +38,6 @@ class BasicAuthRoutesTest < MiniTest::Test
     assert_contains expected_body, request.body
   end
 
-  # Test if the protectedPage route is returning the expected content. We want
-  # to test if  basic access authentication is working properly.
   # Testing invalid credentials (wrong username and password)
   def test_access_to_protected_page_passing_wrong_credentials
     # Requesting the protectedPage of the application.
