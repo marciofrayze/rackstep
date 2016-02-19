@@ -30,20 +30,6 @@ class ValidRoutesTest < RackStepTest
     assert_contains expected_body, request.body
   end
 
-  # Test if the htmlPage route is returning the expected content. We want to
-  # test if render_page is working properly.
-  def test_render_page_route
-    # Requesting the htmlPage page of the application.
-    request = @requester.get URI.escape('/htmlPage')
-    # The response should be OK (200)
-    assert_equal 200, request.status
-    # Content type should be HTML
-    assert_equal 'text/html', request.content_type
-    # Checking if the response contains the expceted text
-    expected_body = 'Just a sample app page'
-    assert_contains expected_body, request.body
-  end
-
   # Test if the erbPage route is returning the expected content. We want to
   # test if render_template is working properly.
   def test_render_erb_route

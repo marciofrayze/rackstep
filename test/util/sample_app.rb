@@ -14,9 +14,6 @@ class SampleApp < RackStep::App
   # Route to requests made to a sample json service.
   add_route('GET', 'myJsonService', 'JsonService')
 
-  # Route to requests made to a simple html page.
-  add_route('GET', 'htmlPage', 'SimpleHtmlPage')
-
   # Route to requests made to a service for testing the 'global' settings.
   add_route('GET', 'settingsTest', 'SimpleSettingsRetrieveService')
 
@@ -74,23 +71,6 @@ class JsonService < RackStep::Controller
     user['job'] = 'Developer'
 
     response.body = user.to_json
-  end
-end
-
-
-# Creating the controller that will process the requests for testing a simple
-# html page.
-class SimpleHtmlPage < RackStep::Controller
-
-  include RackStep::Controller::HtmlRendering
-
-  def process_request
-    # Overwriting default directory (don't wanna create the whole default
-    # folders structure).
-    pages_directory = 'test/util/pages'
-
-    response.body = render_page('justatestpage', pages_directory)
-    response.content_type = 'text/html'
   end
 end
 

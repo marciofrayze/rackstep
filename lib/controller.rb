@@ -61,20 +61,6 @@ class RackStep::NotFoundController < RackStep::Controller
 
 end
 
-# A module for controllers to add static html pages rendering.
-# This is not the best way to serve static content. In production, consider
-# using Nginx or Apache or Amazon S3. Using ruby/rack to serve static content 
-# is a waste of resources and should be only used for low traffic web pages. 
-# This method is provided so that in this circumstances you may use it to 
-# keep a simpler architecture.
-# TODO: Add layout support.
-module RackStep::Controller::HtmlRendering
-  
-  def render_page(page_name, pages_directory = 'app/public/pages')
-    File.read("#{pages_directory}/#{page_name}.html")
-  end
-  
-end
 
 # A module for controllers to add ERB template rendering. RackStep is not meant
 # to be used for template rendering. We recommend you to use a SPA (Single Page
