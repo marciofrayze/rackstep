@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = 'RackStep is (yet another) micro ruby framework for microservices and web development.'
   s.authors     = ['Marcio Frayze David']
   s.email       = 'mfdavid@gmail.com'
-  s.files       = ['lib/response.rb', 'lib/route.rb', 'lib/router.rb', 'lib/global_configuration.rb', 'lib/controller.rb', 'lib/rackstep.rb']
+  s.files       = ['lib/response.rb', 'lib/route.rb', 'lib/router.rb', 'lib/controller.rb', 'lib/rackstep.rb']
   s.homepage    = 'https://github.com/mfdavid/rackstep'
   s.license     = 'MIT'
 end

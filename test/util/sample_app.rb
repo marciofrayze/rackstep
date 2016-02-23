@@ -14,33 +14,11 @@ class SampleApp < RackStep::App
   # Route to requests made to a sample json service.
   add_route('GET', 'myJsonService', 'JsonService')
 
-  # Route to requests made to a service for testing the 'global' settings.
-  add_route('GET', 'settingsTest', 'SimpleSettingsRetrieveService')
-
   # Route to requests made to a page that renders an ERB template.
   add_route('GET', 'erbPage', 'SimpleErbPage')
 
   # Route to requests made to basic access authentication page.
   add_route('GET', 'protectedPage', 'BasicHttpAuthenticationProtectedPage')
-
-  # Route to request made to before and after methods test service.
-  add_route('GET', 'beforeAndAfter', 'BeforAndAfterSettingsService')
-  
-  def initialize(env)
-
-    # Must call super first, to initialize all the necessary attributes.
-    super(env)
-
-    # Adding something to the 'global' setting. This will be injected into all
-    # controllers. The reason there is an if at the end is that this peace of
-    # code (SampleApp initialize) is executed many times (once every request)
-    # but since settings is a singleton, we only have to set it once. After the
-    # first request, the variable should be already setted. Anything that is
-    # setted in the settings hash will be persisted "forever" and is shared
-    # across multiple requests.
-    settings[:test] = "This is just a settings test." if settings[:test] == nil
-
-  end
 
 end
 
@@ -71,17 +49,6 @@ class JsonService < RackStep::Controller
     user['job'] = 'Developer'
 
     response.body = user.to_json
-  end
-end
-
-
-# Creating the controller that will process the requests for testing the 'global'
-# settings.
-class SimpleSettingsRetrieveService < RackStep::Controller
-  def process_request
-    # At the initialize of SampleApp we set a :config. Lets retrieve it and
-    # send back as the body of our response.
-    response.body = settings[:test]
   end
 end
 
@@ -136,29 +103,4 @@ class BasicHttpAuthenticationProtectedPage < RackStep::Controller
 
 end
 
-
-# Creating the controller that will process the requests for testing if the
-# before and after methods are executed as expected.
-class BeforAndAfterSettingsService < RackStep::Controller
-  # Overwriting the before method to test if it's working properly.
-  def before
-    # Will set something to the settings, so I can check in my test if this
-    # method was executed when it was supposed to.
-    settings[:before_after] = settings[:before_after].to_s + "Before"
-  end
-
-  # Overwriting the after method to test if it's working properly.
-  def after
-    # Will add something to the settings, so we can check in this method is 
-    # executed when it was supposed to.
-    settings[:before_after] = settings[:before_after].to_s + "After"
-  end
-
-  def process_request
-    # This service was created to test if the before and after execution are
-    # working properly. The sample app will set a variable at the 'global'
-    # settings hash (settings[:before_after]). Here we will return the content
-    # of that variable.
-    settings[:before_after] = settings[:before_after].to_s + "During"
-  end
-end
+# TODO: Test before and after methods

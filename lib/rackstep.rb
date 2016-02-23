@@ -8,7 +8,6 @@ require 'rack'
 require_relative 'response'
 require_relative 'route'
 require_relative 'router'
-require_relative 'global_configuration'
 require_relative 'controller'
 
 module RackStep
@@ -19,11 +18,6 @@ module RackStep
 
     # Will store the received request which will be injected into the user controllers.
     attr_reader :request
-
-    # A hash that will be injected into the controller. This hash may contain
-    # "global" settings, like a connection to database and other things that 
-    # should be initiaized only once while the app is starting.
-    attr_accessor :settings
 
     # Router is a singleton that will store all the registred routes.
     def router
@@ -38,7 +32,6 @@ module RackStep
     # Initialize all instance variables and add a default "not found" route.
     def initialize(env)
       @request = Rack::Request.new(env)
-      @settings = RackStep::GlobalConfiguration.instance.settings
 
       # Adding default routes to handle page not found (404).
       router.add_route_for_all_verbs('notfound', 'RackStep::NotFoundController')
@@ -57,8 +50,6 @@ module RackStep
       controller = Object.const_get(route.controller).new
       # Inject the request into the controller.
       controller.request = request
-      # Inject the settings into the controller.
-      controller.settings = settings
       # Execute the before method of this controller.
       controller.send(:before)
       # Execute the apropriate method/action.
