@@ -2,6 +2,8 @@
 # us, given a path and a http verb, what controller should handle the business
 # logic of the request.
 
+require 'singleton'
+
 module RackStep
 
   class Router
