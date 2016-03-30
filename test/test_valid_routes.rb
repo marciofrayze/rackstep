@@ -8,7 +8,7 @@ class ValidRoutesTest < RackStepTest
   # Test if the main route is returning the expected message.
   def test_main_route
     # Requesting the root page of the application.
-    request = @requester.get URI.escape('/')
+    request = @requester.get '/'
     # The response should be OK (200)
     assert_equal 200, request.status
     # Content type should be HTML
@@ -20,7 +20,7 @@ class ValidRoutesTest < RackStepTest
   # Test if the json route is returning the expected content.
   def test_json_route
     # Requesting the myJsonService page of the application.
-    request = @requester.get URI.escape('/myJsonService')
+    request = @requester.get '/myJsonService'
     # The response should be OK (200)
     assert_equal 200, request.status
     # Content type should be JSON
@@ -34,7 +34,7 @@ class ValidRoutesTest < RackStepTest
   # test if render_template is working properly.
   def test_render_erb_route
     # Requesting the htmlPage page of the application.
-    request = @requester.get URI.escape('/erbPage')
+    request = @requester.get '/erbPage'
     # The response should be OK (200)
     assert_equal 200, request.status
     # Content type should be HTML

@@ -8,7 +8,7 @@ class BasicAuthRoutesTest < RackStepTest
   # Testing invalid credentials (none).
   def test_access_to_protected_page_passing_no_credentials
     # Requesting the protectedPage of the application.
-    uri = URI.escape('/protectedPage')
+    uri = '/protectedPage'
     request = @requester.get(uri)
     # The response should be Unauthorized (401).
     assert_equal 401, request.status
@@ -24,7 +24,7 @@ class BasicAuthRoutesTest < RackStepTest
   # Testing valid credentials.
   def test_access_to_protected_page_passing_right_credentials
     # Requesting the protectedPage of the application.
-    request = @requester.get( URI.escape('/protectedPage'),
+    request = @requester.get( '/protectedPage',
                               { 'HTTP_AUTHORIZATION'=> encode_credentials('myBoringUsername', 'myBoringPassword') } )
 
     # The response should be OK (200)
@@ -41,7 +41,7 @@ class BasicAuthRoutesTest < RackStepTest
   # Testing invalid credentials (wrong username and password)
   def test_access_to_protected_page_passing_wrong_credentials
     # Requesting the protectedPage of the application.
-    request = @requester.get( URI.escape('/protectedPage'),
+    request = @requester.get( '/protectedPage',
                               { 'HTTP_AUTHORIZATION'=> encode_credentials('myWrongUsername', 'myWrongPassword') } )
 
     # The response should be OK (200)
