@@ -23,6 +23,8 @@ Main goals are:
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/mfdavid/rackstep/blob/master/LICENSE)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/mfdavid/rackstep)
 
+[![Twitter](https://img.shields.io/twitter/follow/rackstep.svg?style=social)](https://twitter.com/rackstep)
+
 
 ## Dependancies
 
