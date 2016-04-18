@@ -9,12 +9,6 @@ class RackStep::Controller
   # The Rack::Response object that will be delivered to the user.
   attr_accessor :response
 
-  # The 'global' app settings will be injected here. This hash variable is
-  # initialized only once (singleton) and may contain references to things
-  # that should be initialize only once during the app start (eg: database
-  # connection).
-  attr_accessor :settings
-
   def initialize
     @response = RackStep::Response.new
     @response.body = ''
