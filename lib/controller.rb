@@ -50,7 +50,7 @@ class RackStep::NotFoundController < RackStep::Controller
   def process_request
     @response.body = '404 - Page not found'
     @response.content_type = 'text/plain'
-    @response.status  = 404
+    @response.status = 404
   end
 
 end
