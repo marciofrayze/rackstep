@@ -63,7 +63,7 @@ Open coverage/index.html to see the results.
 
 ## In the wild (who is using it?)
 
-RackStep is still in very early stage of development and testing. Right now there is only one website that was built using it: [Ninirc.com](http://ninirc.com)
+RackStep still in very early stage of development and testing. Right now there is only one website that was built using it: [Ninirc.com](http://ninirc.com)
 
 
 ## Author
