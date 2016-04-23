@@ -25,6 +25,10 @@ Main goals are:
 
 [![Twitter](https://img.shields.io/twitter/follow/rackstep.svg?style=social)](https://twitter.com/rackstep)
 
+## A quick introduction to RackStep
+
+[![A quick introduction to RackStep](http://img.youtube.com/vi/MFJut9t5ZLw/0.jpg)](https://www.youtube.com/watch?v=MFJut9t5ZLw "A quick introduction to RackStep.
+")
 
 ## Dependancies
 
