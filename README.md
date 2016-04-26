@@ -33,10 +33,37 @@ Main goals are:
 Source code of the presentation:
 [github.com/mfdavid/rackstep-presentations](http://github.com/mfdavid/rackstep-presentations)
 
+## Example code
+
+#### Let's create a simple service that returns the current date and time.
+```ruby
+# app.rb
+require 'rackstep'
+require 'json'
+
+class App < RackStep::App
+  add_route('GET', 'time', 'TimeController')
+end
+
+class TimeController < RackStep::Controller
+  def process_request
+    time_hash = {:time => Time.now}
+    response.body = time_hash.to_json
+  end
+end
+```
+```ruby
+# config.ru
+require_relative 'app.rb'
+
+run App
+```
+The service will be available at */time* path and will return the current date and time in *json* format.
+
 ## Dependancies
 
 RackStep is developed and tested with Ruby 2.3.0. The only hard dependency is
-Rack gem itself, but there are a few others recommended gems:
+Rack itself, but there are a few recommended gems:
 - unicorn: fast rack-compatible server that can be used for production.
 - simplecov: a simple way to generate statistics about your unit tests coverage.
 
