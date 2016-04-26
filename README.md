@@ -30,6 +30,9 @@ Main goals are:
 [![A quick introduction to RackStep](http://img.youtube.com/vi/MFJut9t5ZLw/0.jpg)](https://www.youtube.com/watch?v=MFJut9t5ZLw "A quick introduction to RackStep.
 ")
 
+Source code of the presentation:
+[github.com/mfdavid/rackstep-presentations](http://github.com/mfdavid/rackstep-presentations)
+
 ## Dependancies
 
 RackStep is developed and tested with Ruby 2.3.0. The only hard dependency is
@@ -47,10 +50,10 @@ Install the bundle gem if you don't have it already: gem install bundle
 To create a new application, you may clone one of the following repositories as a starting point example:
 
 A full app example:
-https://github.com/mfdavid/rackstep-app-template
+[github.com/mfdavid/rackstep-app-template](https://github.com/mfdavid/rackstep-app-template)
 
 A minimum app example:
-https://github.com/mfdavid/rackstep-minimum-app-template
+[github.com/mfdavid/rackstep-minimum-app-template](https://github.com/mfdavid/rackstep-minimum-app-template)
 
 Go into the directory you cloned the project and install the dependancies by running: bundle install
 
