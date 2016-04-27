@@ -16,10 +16,10 @@ module RackStep
   # This class MUST be extended by the user.
   class App
 
-    # Will store the received request which will be injected into the user controllers.
+    # Stores the received request which will then be injected into the user controllers.
     attr_reader :request
 
-    # Router is a singleton that will store all the registred routes.
+    # Access the Router, a singleton class that stores all the registred routes.
     def router
       Router.instance
     end
@@ -29,7 +29,7 @@ module RackStep
       new(env).process_request
     end
 
-    # Initialize all instance variables and add a default "not found" route.
+    # Initialize the request instance variable and add a default "not found" route.
     def initialize(env)
       @request = Rack::Request.new(env)
 

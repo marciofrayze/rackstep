@@ -9,12 +9,6 @@ class RackStep::Controller
   # The Rack::Response object that will be delivered to the user.
   attr_accessor :response
 
-  # The 'global' app settings will be injected here. This hash variable is
-  # initialized only once (singleton) and may contain references to things
-  # that should be initialize only once during the app start (eg: database
-  # connection).
-  attr_accessor :settings
-
   def initialize
     @response = RackStep::Response.new
     @response.body = ''
@@ -56,7 +50,7 @@ class RackStep::NotFoundController < RackStep::Controller
   def process_request
     @response.body = '404 - Page not found'
     @response.content_type = 'text/plain'
-    @response.status  = 404
+    @response.status = 404
   end
 
 end
@@ -78,6 +72,7 @@ module RackStep::Controller::ErbRendering
   end
 
 end
+
 
 # A module for controllers to add basic http authentication helper method.
 module RackStep::Controller::BasicHttpAuthentication
