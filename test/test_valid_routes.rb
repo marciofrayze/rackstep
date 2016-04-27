@@ -9,9 +9,9 @@ class ValidRoutesTest < RackStepTest
   def test_main_route
     # Requesting the root page of the application.
     request = @requester.get '/'
-    # The response should be OK (200)
+    # The request status should return OK (200)
     assert_equal 200, request.status
-    # Content type should be HTML
+    # Content type should be text/plain
     assert_equal 'text/plain', request.content_type
     # Checking if the response contains the expceted text
     assert_contains "Welcome to the RackStep Sample App", request.body

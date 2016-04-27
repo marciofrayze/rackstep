@@ -20,6 +20,7 @@ module RackStep
     end
 
     def add_route(verb, path, controller)     
+      path = path[1..-1] if path[0] == '/' # Ignoring the first char if path starts with '/'.
       route = Route.new(verb, path, controller)
       routes[route.id] = route
     end
