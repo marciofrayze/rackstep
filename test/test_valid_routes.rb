@@ -44,4 +44,12 @@ class ValidRoutesTest < RackStepTest
     assert_contains expected_body, request.body
   end
 
+  # Test is redirect_to is working properly.
+  def test_redirect_to
+    # Requesting the route that implement the redirect.
+    request = @requester.get '/testRedirect'
+    # The response should be status 302
+    assert_equal 302, request.status
+  end
+
 end

@@ -20,6 +20,9 @@ class SampleApp < RackStep::App
   # Route to requests made to basic access authentication page.
   add_route('GET', 'protectedPage', 'BasicHttpAuthenticationProtectedPage')
 
+  # Route to test redirect_to.
+  add_route('GET', 'testRedirect', 'Redirector')
+
 end
 
 
@@ -92,7 +95,7 @@ class BasicHttpAuthenticationProtectedPage < RackStep::Controller
       # TODO: Make life easier for the app developer.
       response.status = 401
       response.body = 'Access Denied'
-      # In a real life application you must set this header so the browser knows 
+      # In a real life application you must set this header so the browser knows
       # that it should ask for the username and password.
       response.headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
     else
@@ -101,6 +104,14 @@ class BasicHttpAuthenticationProtectedPage < RackStep::Controller
     end
   end
 
+end
+
+
+# A controller for testing the redirect_to.
+class Redirector < RackStep::Controller
+  def process_request
+    response.redirect_to('/anotherService')
+  end
 end
 
 # TODO: Test before and after methods
