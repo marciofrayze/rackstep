@@ -42,6 +42,7 @@ require 'rackstep'
 require 'json'
 
 class App < RackStep::App
+  # Routing all GET requests to "/time" path to the TimeController class.
   add_route('GET', 'time', 'TimeController')
 end
 
