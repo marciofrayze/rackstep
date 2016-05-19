@@ -48,13 +48,7 @@ module RackStep
       # the apropriate controller to handle the request.
       route = router.find_route_for(path, verb)
       # Initialize the correspondent controller.
-      # TODO: Use of Strings is deprecated.
-      controller = nil
-      if (route.controller.is_a?(String))
-        controller = Object.const_get(route.controller).new
-      else
-        controller = route.controller.new
-      end
+      controller = route.controller.new
       # Inject the request into the controller.
       controller.request = request
       # Execute the before method of this controller.
