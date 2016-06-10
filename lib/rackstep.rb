@@ -10,9 +10,10 @@ require_relative 'route'
 require_relative 'router'
 require_relative 'controller'
 
+
 module RackStep
 
-  # Abstract class with the base of a RackStep app. 
+  # Abstract class with the base of a RackStep app.
   # This class MUST be extended by the user.
   class App
 
@@ -34,7 +35,7 @@ module RackStep
       @request = Rack::Request.new(env)
 
       # Adding default routes to handle page not found (404).
-      router.add_route_for_all_verbs('notfound', 'RackStep::NotFoundController')
+      router.add_route_for_all_verbs('notfound', RackStep::NotFoundController)
     end
 
     # TODO: Code Climate says this method is too big.
@@ -42,12 +43,12 @@ module RackStep
       verb = request.request_method
       path = request.path
 
-      # In RackStep, each request is processed by a controller. The router 
+      # In RackStep, each request is processed by a controller. The router
       # is responsable to find, based on the given path and http verb,
       # the apropriate controller to handle the request.
       route = router.find_route_for(path, verb)
       # Initialize the correspondent controller.
-      controller = Object.const_get(route.controller).new
+      controller = route.controller.new
       # Inject the request into the controller.
       controller.request = request
       # Execute the before method of this controller.
@@ -62,7 +63,7 @@ module RackStep
       return response
     end
 
-    # This method was created to make it easier for the user to add routes, but it 
+    # This method was created to make it easier for the user to add routes, but it
     # will delegate to the router singleton class.
     def self.add_route(verb, path, controller)
       router = Router.instance

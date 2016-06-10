@@ -4,24 +4,6 @@
 # Loading RackStep files.
 require_relative '../../lib/rackstep'
 
-# Creating the app class and adding a few routes.
-class SampleApp < RackStep::App
-
-  # Adding a route to requests made to the root of our path and delegating
-  # them to SimplePlainTextService controller.
-  add_route('GET', '', 'SimplePlainTextService')
-
-  # Route to requests made to a sample json service.
-  add_route('GET', 'myJsonService', 'JsonService')
-
-  # Route to requests made to a page that renders an ERB template.
-  add_route('GET', 'erbPage', 'SimpleErbPage')
-
-  # Route to requests made to basic access authentication page.
-  add_route('GET', 'protectedPage', 'BasicHttpAuthenticationProtectedPage')
-
-end
-
 
 # Creating the controller that will process the requests for testing a very
 # simple text/plain response.
@@ -92,7 +74,7 @@ class BasicHttpAuthenticationProtectedPage < RackStep::Controller
       # TODO: Make life easier for the app developer.
       response.status = 401
       response.body = 'Access Denied'
-      # In a real life application you must set this header so the browser knows 
+      # In a real life application you must set this header so the browser knows
       # that it should ask for the username and password.
       response.headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
     else
@@ -102,5 +84,36 @@ class BasicHttpAuthenticationProtectedPage < RackStep::Controller
   end
 
 end
+
+
+# A controller for testing the redirect_to.
+class Redirector < RackStep::Controller
+  def process_request
+    response.redirect_to('/anotherService')
+  end
+end
+
+
+# Creating the app class and adding a few routes.
+class SampleApp < RackStep::App
+
+  # Adding a route to requests made to the root of our path and delegating
+  # them to SimplePlainTextService controller.
+  add_route('GET', '', SimplePlainTextService)
+
+  # Route to requests made to a sample json service.
+  add_route('GET', 'myJsonService', JsonService)
+
+  # Route to requests made to a page that renders an ERB template.
+  add_route('GET', 'erbPage', SimpleErbPage)
+
+  # Route to requests made to basic access authentication page.
+  add_route('GET', 'protectedPage', BasicHttpAuthenticationProtectedPage)
+
+  # Route to test redirect_to.
+  add_route('GET', 'testRedirect', Redirector)
+
+end
+
 
 # TODO: Test before and after methods

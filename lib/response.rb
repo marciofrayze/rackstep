@@ -27,6 +27,13 @@ module RackStep
       header['Content-Type'] = value
     end
 
+    # A helper for redirecting to another adddress.
+    # Will send back a 302 status code.
+    def redirect_to(address)
+      @status = 302
+      header['Location'] = address
+    end
+
   end
 
 end
