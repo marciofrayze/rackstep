@@ -41,16 +41,16 @@ Source code of the presentation:
 require 'rackstep'
 require 'json'
 
-class App < RackStep::App
-  # Routing all GET requests to "/time" path to the TimeController class.
-  add_route('GET', 'time', 'TimeController')
-end
-
 class TimeController < RackStep::Controller
   def process_request
     time_hash = {:time => Time.now}
     response.body = time_hash.to_json
   end
+end
+
+class App < RackStep::App
+  # Routing all GET requests to "/time" path to the TimeController class.
+  add_route('GET', 'time', TimeController)
 end
 ```
 ```ruby
