@@ -101,6 +101,11 @@ Open coverage/index.html to see the results.
 RackStep still in very early stage of development and testing. Right now there is only one website that was built using it: [Ninirc.com](http://ninirc.com)
 
 
+## What's next?
+
+We are working on a new Routing system! The new Router will keep simple things simple, yet allow more complex routes (eg. path parameters).
+
+
 ## Author
 
 RackStep is developed by Marcio Frayze David - mfdavid@gmail.com.
