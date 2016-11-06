@@ -2,10 +2,6 @@
 # 'rake test' and your unit tests should require this file to load some
 # basic dependancies and to load SimpleCov.
 
-# Requiring and starting statistics for codeclimate.com.
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
 # Starting SimpleCov to create a report about unit test coverage. The result
 # will be available at the coverage folder after you execute the tests by
 # running 'rake test'.
