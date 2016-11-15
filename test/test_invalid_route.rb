@@ -13,4 +13,11 @@ class InvalidRoutesTest < RackStepTest
     assert_equal 404, request.status
   end
 
+  def test_controller_without_process_request
+    # Requesting the route that didnt implemented the process_request method.
+    request = @requester.get '/processRequestorNotImplemented'
+    # The response should be status 500
+    assert_equal 500, request.status
+  end
+
 end

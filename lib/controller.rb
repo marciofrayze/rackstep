@@ -1,7 +1,23 @@
+# This is the default action that will handle the "page internal server error" (500) if a process_request didnt implemented. 
+class ProcessRequestor
+
+  # Once the application receives a new request, the router will decide wich
+  # controller should process that request and will execute this method for
+  # the chosen controller. So this is the most important method of this class
+  # and every controller should overwrite it to implement it's business
+  # logic.
+  def process_request
+    @response.body = '500 - Internal Server Error'
+    @response.content_type = 'text/plain'
+    @response.status = 500
+  end
+
+end
+
 # Abstract controller class with some helper methods. ALL your controllers
 # MUST use this one as a superclass.
 
-class RackStep::Controller
+class RackStep::Controller < ProcessRequestor
 
   # The request will be injected here.
   attr_accessor :request
@@ -14,14 +30,6 @@ class RackStep::Controller
     @response.body = ''
     @response.content_type = 'application/json'
     @response.status = 200
-  end
-
-  # Once the application receives a new request, the router will decide wich
-  # controller should process that request and will execute this method for
-  # the chosen controller. So this is the most important method of this class
-  # and every controller should overwrite it to implement it's business
-  # logic.
-  def process_request
   end
 
   # RackStep will always execute this method before delegating the request
@@ -41,7 +49,6 @@ class RackStep::Controller
   end
 
 end
-
 
 # This is the default controller that will handle the "page not found" (404). 
 # The user may overwrite this by creating new route to 'notfound'.

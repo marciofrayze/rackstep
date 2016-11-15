@@ -94,6 +94,11 @@ class Redirector < RackStep::Controller
 end
 
 
+# Creating the controller that wont implement the process_request method
+class ProcessRequestorNotImplemented < RackStep::Controller
+end
+
+
 # Creating the app class and adding a few routes.
 class SampleApp < RackStep::App
 
@@ -113,6 +118,8 @@ class SampleApp < RackStep::App
   # Route to test redirect_to.
   add_route('GET', 'testRedirect', Redirector)
 
+  # Route to test controller that didnt implemented process_request.
+  add_route('GET', 'processRequestorNotImplemented', ProcessRequestorNotImplemented)
 end
 
 
