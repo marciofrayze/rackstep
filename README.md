@@ -65,7 +65,7 @@ The service will be available at */time* path and will return the current date a
 
 RackStep is developed and tested with Ruby 2.4.1. The only hard dependency is
 Rack itself, but there are a few recommended gems:
-- unicorn: fast rack-compatible server that can be used for production.
+- puma: fast rack-compatible server that can be used for production.
 - simplecov: a simple way to generate statistics about your unit tests coverage.
 
 
@@ -85,7 +85,7 @@ A minimum app example:
 
 Go into the directory you cloned the project and install the dependancies by running: bundle install
 
-Start the application server using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep full app template example is pre-configured to use unicorn.
+Start the application server using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep full app template example is pre-configured to use puma.
 
 
 ## Running tests
