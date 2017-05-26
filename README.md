@@ -63,7 +63,7 @@ The service will be available at */time* path and will return the current date a
 
 ## Dependancies
 
-RackStep is developed and tested with Ruby 2.4.0. The only hard dependency is
+RackStep is developed and tested with Ruby 2.4.1. The only hard dependency is
 Rack itself, but there are a few recommended gems:
 - unicorn: fast rack-compatible server that can be used for production.
 - simplecov: a simple way to generate statistics about your unit tests coverage.
@@ -71,7 +71,7 @@ Rack itself, but there are a few recommended gems:
 
 ## How to use RackStep
 
-Make sure you have ruby 2.4.0 installed (ruby --version). If you don't, we recommend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it. RackStep may work with older ruby implementations but we always develop and test with the latest Ruby MRI stable version.
+Make sure you have ruby 2.4.1 installed (ruby --version). If you don't, we recommend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it. RackStep may work with older ruby implementations but we always develop and test with the latest Ruby MRI stable version.
 
 Install the bundle gem if you don't have it already: gem install bundle
 
