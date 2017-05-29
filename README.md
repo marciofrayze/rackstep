@@ -73,7 +73,10 @@ Rack itself, but there are a few recommended gems:
 
 Make sure you have ruby 2.4.1 installed (ruby --version). If you don't, we recommend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it. RackStep may work with older ruby implementations but we always develop and test with the latest Ruby MRI stable version.
 
-Install the bundle gem if you don't have it already: gem install bundle
+Install the bundle gem if you don't have it already: 
+```
+gem install bundle
+```
 
 To create a new application, you may clone one of the following repositories as a starting point example:
 
@@ -83,15 +86,20 @@ A full app example:
 A minimum app example:
 [github.com/mfdavid/rackstep-minimum-app-template](https://github.com/mfdavid/rackstep-minimum-app-template)
 
-Go into the directory you cloned the project and install the dependancies by running: bundle install
+Go into the directory you cloned the project and install the dependancies by running: 
+```
+bundle install
+```
 
-Start the application server using any rack-compatible server. For development I recommend using shotgun or rackup. For production, RackStep full app template example is pre-configured to use puma.
+Start the application server using any rack-compatible server. For development we recommend using shotgun or rackup. RackStep full app template example is pre-configured to use puma in production.
 
 
 ## Running tests
 
 In the main folder of the project, execute:
+```
 rake test
+```
 
 Open coverage/index.html to see the results.
 
