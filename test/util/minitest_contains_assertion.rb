@@ -1,4 +1,4 @@
-# Extending the Minitest framework a new assertion method (contains).
+# Extending the Minitest framework to add a new assertion method (contains).
 
 module Minitest::Assertions
   def assert_contains(exp_substr, obj, msg=nil)
