@@ -12,7 +12,7 @@ class BasicAuthRoutesTest < RackStepTest
     request = @requester.get(uri)
     # The response should be Unauthorized (401).
     assert_equal 401, request.status
-    # Content type should be HTML
+    # Content type should be HTML.
     assert_equal 'text/html', request.content_type
     # Should contain a header with 'WWW-Authenticate'.
     assert request.headers['WWW-Authenticate'] != nil
@@ -27,26 +27,26 @@ class BasicAuthRoutesTest < RackStepTest
     request = @requester.get( '/protectedPage',
                               { 'HTTP_AUTHORIZATION'=> encode_credentials('myBoringUsername', 'myBoringPassword') } )
 
-    # The response should be OK (200)
+    # The response should be OK (200).
     assert_equal 200, request.status
-    # Content type should be HTML
+    # Content type should be HTML.
     assert_equal 'text/html', request.content_type
     # Should not contain a header with 'WWW-Authenticate'.
     assert request.headers['WWW-Authenticate'] == nil
-    # Checking if the response contains the expceted text
+    # Checking if the response contains the expceted text.
     expected_body = 'Welcome! You are now logged in.'
     assert_contains expected_body, request.body
   end
 
-  # Testing invalid credentials (wrong username and password)
+  # Testing invalid credentials (wrong username and password).
   def test_access_to_protected_page_passing_wrong_credentials
     # Requesting the protectedPage of the application.
     request = @requester.get( '/protectedPage',
                               { 'HTTP_AUTHORIZATION'=> encode_credentials('myWrongUsername', 'myWrongPassword') } )
 
-    # The response should be OK (200)
+    # The response should be OK (200).
     assert_equal 401, request.status
-    # Content type should be HTML
+    # Content type should be HTML.
     assert_equal 'text/html', request.content_type
     # Should contain a header with 'WWW-Authenticate'.
     assert request.headers['WWW-Authenticate'] != nil
