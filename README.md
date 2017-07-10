@@ -5,9 +5,9 @@ RackStep is (yet another) micro ruby framework for microservices and web develop
 Main goals are:
 - be as simple as possible.
 - keep the source code small.
-- implement only the necessary; no overcomplication.
+- implement only the necessary; no overcomplications.
 - allow easy implementation of microservices.
-- use a pure object-oriented approach, avoiding DSLs and configuration files.
+- be a pure object-oriented approach, avoiding DSLs and configuration files.
 
 
 ## Status
@@ -21,9 +21,9 @@ Main goals are:
 [![Gemnasium](https://gemnasium.com/mfdavid/rackstep.svg)](https://gemnasium.com/mfdavid/rackstep)
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/mfdavid/rackstep/blob/master/LICENSE)
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/mfdavid/rackstep)
 
 [![Twitter](https://img.shields.io/twitter/follow/rackstep.svg?style=social)](https://twitter.com/rackstep)
+
 
 ## A quick introduction to RackStep
 
@@ -32,6 +32,7 @@ Main goals are:
 
 Source code of the presentation:
 [github.com/mfdavid/rackstep-presentations](http://github.com/mfdavid/rackstep-presentations)
+
 
 ## Example code
 
@@ -60,6 +61,7 @@ require_relative 'app.rb'
 run App
 ```
 The service will be available at */time* path and will return the current date and time in *json* format.
+
 
 ## Dependancies
 
