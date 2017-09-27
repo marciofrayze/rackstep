@@ -2,14 +2,20 @@
 # and codeclimate.com systems.
 
 language: ruby
-script: bundle exec rake test
 rvm:
   - 2.4.1
 gemfile:
   - Gemfile
-addons:
-    code_climate:
-        repo_token: 60b467bf610dd1c7bd82459817f479feaf9b9b33aec9c181f4b7a431a4ff7080
+env:
+  global:
+    - CC_TEST_REPORTER_ID=60b467bf610dd1c7bd82459817f479feaf9b9b33aec9c181f4b7a431a4ff7080
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script: bundle exec rake test
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 notifications:
   webhooks:
     urls:
