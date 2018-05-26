@@ -44,7 +44,7 @@ class ValidRoutesTest < RackStepTest
     assert_contains expected_body, request.body
   end
 
-  # Test is redirect_to is working properly.
+  # Test if redirect_to is working properly.
   def test_redirect_to
     # Requesting the route that implement the redirect.
     request = @requester.get '/testRedirect'
