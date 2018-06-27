@@ -18,7 +18,6 @@ Main goals are:
 [![Ich CI](http://inch-ci.org/github/mfdavid/rackstep.png)](http://inch-ci.org/github/mfdavid/rackstep)
 [![Gem Version](https://badge.fury.io/rb/rackstep.svg)](https://badge.fury.io/rb/rackstep)
 [![Downloads](http://ruby-gem-downloads-badge.herokuapp.com/rackstep?type=total&color=brightgreen)](https://rubygems.org/gems/rackstep)
-[![Gemnasium](https://gemnasium.com/mfdavid/rackstep.svg)](https://gemnasium.com/mfdavid/rackstep)
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/mfdavid/rackstep/blob/master/LICENSE)
 
