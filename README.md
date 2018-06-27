@@ -106,11 +106,6 @@ rake test
 Open coverage/index.html to see the results.
 
 
-## In the wild (who is using it?)
-
-RackStep still in very early stage of development and testing. Right now there is only one website that was built using it: [Ninirc.com](http://ninirc.com)
-
-
 ## Author
 
-RackStep is developed by Marcio Frayze David - mfdavid@gmail.com.
+RackStep is maintained by Marcio Frayze David - mfdavid@gmail.com.
