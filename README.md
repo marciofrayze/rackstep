@@ -21,8 +21,6 @@ Main goals are:
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/mfdavid/rackstep/blob/master/LICENSE)
 
-[![Twitter](https://img.shields.io/twitter/follow/rackstep.svg?style=social)](https://twitter.com/rackstep)
-
 
 ## A quick introduction to RackStep
 
