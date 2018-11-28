@@ -32,9 +32,7 @@ module RackStep
       # 'http//localhost/' will be the same of 'http://localhost' (both will
       # be empty strings).
       path = path[1..-1] if path[0] == '/'
-      # Re-creating the route id (verb + path).
       route_id = verb + path
-      # Getting the correspondent route or nil if route is invalid.
       route = routes[route_id]
       # If no route was found, set it to 'notfound' route (maintaining the
       # original verb).

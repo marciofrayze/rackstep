@@ -10,25 +10,19 @@ module RackStep
     # necessary.
     def body=(value)
       if value.is_a?(String)
-        # Convert it to an array.
         value = [value]
       end
 
       super(value)
     end
 
-    # Just a helper to get the content type from the response header.
+    # Helpers
     def content_type
       header['Content-Type']
     end
-
-    # Just a helper to set the content type on the response header.
     def content_type=(value)
       header['Content-Type'] = value
     end
-
-    # A helper for redirecting to another adddress.
-    # Will send back a 302 status code.
     def redirect_to(address)
       @status = 302
       header['Location'] = address
