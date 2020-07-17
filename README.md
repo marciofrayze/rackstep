@@ -1,5 +1,7 @@
 # RackStep
 
+**Warning: This project is no longer maintained :(**
+
 RackStep is (yet another) micro ruby framework for microservices and web development.
 
 Main goals are:
