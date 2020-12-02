@@ -12,14 +12,14 @@ Main goals are:
 
 ## Status
 
-[![Travis CI](https://api.travis-ci.org/mfdavid/rackstep.svg)](https://travis-ci.org/mfdavid/rackstep)
-[![Code Climate](https://codeclimate.com/github/mfdavid/rackstep/badges/gpa.svg)](https://codeclimate.com/github/mfdavid/rackstep)
-[![Coverage](https://codeclimate.com/github/mfdavid/rackstep/badges/coverage.svg)](https://codeclimate.com/github/mfdavid/rackstep)
-[![Ich CI](http://inch-ci.org/github/mfdavid/rackstep.png)](http://inch-ci.org/github/mfdavid/rackstep)
+[![Travis CI](https://api.travis-ci.org/marciofrayze/rackstep.svg)](https://travis-ci.org/marciofrayze/rackstep)
+[![Code Climate](https://codeclimate.com/github/marciofrayze/rackstep/badges/gpa.svg)](https://codeclimate.com/github/marciofrayze/rackstep)
+[![Coverage](https://codeclimate.com/github/marciofrayze/rackstep/badges/coverage.svg)](https://codeclimate.com/github/marciofrayze/rackstep)
+[![Ich CI](http://inch-ci.org/github/marciofrayze/rackstep.png)](http://inch-ci.org/github/marciofrayze/rackstep)
 [![Gem Version](https://badge.fury.io/rb/rackstep.svg)](https://badge.fury.io/rb/rackstep)
 [![Downloads](http://ruby-gem-downloads-badge.herokuapp.com/rackstep?type=total&color=brightgreen)](https://rubygems.org/gems/rackstep)
 
-[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/mfdavid/rackstep/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/marciofrayze/rackstep/blob/master/LICENSE)
 
 
 ## A quick introduction to RackStep
@@ -28,7 +28,7 @@ Main goals are:
 ")
 
 Source code of the presentation:
-[github.com/mfdavid/rackstep-presentations](http://github.com/mfdavid/rackstep-presentations)
+[github.com/marciofrayze/rackstep-presentations](http://github.com/marciofrayze/rackstep-presentations)
 
 
 ## Example code
@@ -80,10 +80,10 @@ gem install bundle
 To create a new application, you may clone one of the following repositories as a starting point example:
 
 A full app example:
-[github.com/mfdavid/rackstep-app-template](https://github.com/mfdavid/rackstep-app-template)
+[github.com/marciofrayze/rackstep-app-template](https://github.com/marciofrayze/rackstep-app-template)
 
 A minimum app example:
-[github.com/mfdavid/rackstep-minimum-app-template](https://github.com/mfdavid/rackstep-minimum-app-template)
+[github.com/marciofrayze/rackstep-minimum-app-template](https://github.com/marciofrayze/rackstep-minimum-app-template)
 
 Go into the directory you cloned the project and install the dependancies by running: 
 ```
