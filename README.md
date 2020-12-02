@@ -62,7 +62,7 @@ The service will be available at */time* path and will return the current date a
 
 ## Dependancies
 
-RackStep is developed and tested with Ruby 2.5.3. The only hard dependency is
+RackStep is developed and tested with Ruby 2.7.2. The only hard dependency is
 Rack itself, but there are a few recommended gems:
 - puma: fast rack-compatible server that can be used for production.
 - simplecov: a simple way to generate statistics about your unit tests coverage.
