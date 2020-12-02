@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.3'
+ruby '2.7.2'
 
 group :test do
   gem 'rake'       # Used for task execution.
