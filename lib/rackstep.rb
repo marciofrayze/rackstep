@@ -27,7 +27,8 @@ module RackStep
 
     # Static method called from config.ru ("run App").
     def self.call(env)
-      new(env).process_request
+      response = new(env).process_request
+      return response.status, response.headers, response.body
     end
 
     # Initialize the request instance variable and add a default "not found" route.
