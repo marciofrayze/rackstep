@@ -48,17 +48,11 @@ module RackStep
       # is responsable to find, based on the given path and http verb,
       # the apropriate controller to handle the request.
       route = router.find_route_for(path, verb)
-      # Initialize the correspondent controller.
       controller = route.controller.new
-      # Inject the request into the controller.
       controller.request = request
-      # Execute the before method of this controller.
       controller.send(:before)
-      # Execute the apropriate method/action.
       controller.send(:process_request)
-      # Execute the after method of this controller.
       controller.send(:after)
-      # Get from the controller what is the response for this request.
       response = controller.response
 
       return response
