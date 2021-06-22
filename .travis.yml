@@ -3,12 +3,12 @@
 
 language: ruby
 rvm:
-  - 2.7.2
+  - 3.0.1
 gemfile:
   - Gemfile
 env:
   global:
-    - CC_TEST_REPORTER_ID=60b467bf610dd1c7bd82459817f479feaf9b9b33aec9c181f4b7a431a4ff7080
+    - CC_TEST_REPORTER_ID=43ff03d046139c598b997c1208ff15d5df2eb62354e66fe25656936c3a3f1ecc
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
