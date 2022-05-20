@@ -16,6 +16,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-21
 
 DEPENDENCIES
   minitest
@@ -24,7 +25,7 @@ DEPENDENCIES
   simplecov
 
 RUBY VERSION
-   ruby 3.0.1p64
+   ruby 3.1.2p20
 
 BUNDLED WITH
    2.2.15
