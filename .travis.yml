@@ -12,12 +12,12 @@ env:
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build --debug
+  - ./cc-test-reporter before-build 
 before_install:
   - gem update --system # Fixing "bundler: failed to load command: rake" error
 script: bundle exec rake test
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT --debug
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT 
 notifications:
   webhooks:
     urls:
