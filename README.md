@@ -11,7 +11,7 @@ Main goals are:
 
 ## Status
 
-[![Travis CI](https://api.travis-ci.org/marciofrayze/rackstep.svg)](https://travis-ci.org/marciofrayze/rackstep)
+[![Travis CI](https://api.travis-ci.com/marciofrayze/rackstep.svg)](https://travis-ci.com/marciofrayze/rackstep)
 [![Code Climate](https://codeclimate.com/github/marciofrayze/rackstep/badges/gpa.svg)](https://codeclimate.com/github/marciofrayze/rackstep)
 [![Coverage](https://codeclimate.com/github/marciofrayze/rackstep/badges/coverage.svg)](https://codeclimate.com/github/marciofrayze/rackstep)
 [![Ich CI](http://inch-ci.org/github/marciofrayze/rackstep.png)](http://inch-ci.org/github/marciofrayze/rackstep)
