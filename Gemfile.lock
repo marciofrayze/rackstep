@@ -3,7 +3,7 @@ GEM
   specs:
     docile (1.4.0)
     minitest (5.15.0)
-    rack (2.2.3.1)
+    rack (2.2.6.4)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rake (13.0.6)
