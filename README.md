@@ -46,7 +46,7 @@ class TimeController < RackStep::Controller
 end
 
 class App < RackStep::App
-  # Routing all GET requests to "/time" path to the TimeController class.
+  # Routing all GET requests from "/time" path to the TimeController class.
   add_route('GET', 'time', TimeController)
 end
 ```
@@ -61,7 +61,7 @@ The service will be available at */time* path and will return the current date a
 
 ## Dependancies
 
-RackStep is developed and tested with Ruby 3.1.2. The only hard dependency is
+RackStep is developed and tested with Ruby 3.2.1. The only hard dependency is
 Rack itself, but there are a few recommended gems:
 - puma: fast rack-compatible server that can be used for production.
 - simplecov: a simple way to generate statistics about your unit tests coverage.
@@ -69,7 +69,7 @@ Rack itself, but there are a few recommended gems:
 
 ## How to use RackStep
 
-Make sure you have ruby 3.1.2 installed (ruby --version). If you don't, we recommend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it. RackStep may work with older ruby implementations but we always develop and test with the latest Ruby MRI stable version.
+Make sure you have ruby 3.2.1 installed (ruby --version). If you don't, we recommend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it. RackStep may work with older ruby implementations but we always develop and test with the latest Ruby MRI stable version.
 
 Install the bundle gem if you don't have it already: 
 ```
@@ -89,7 +89,7 @@ Go into the directory you cloned the project and install the dependancies by run
 bundle install
 ```
 
-Start the application server using any rack-compatible server. For development we recommend using shotgun or rackup. RackStep full app template example is pre-configured to use puma in production.
+Start the application server using any [rack](https://github.com/rack/rack)-compatible server. For development we recommend using [shotgun](https://github.com/rtomayko/shotgun) or [rackup](https://github.com/rack/rackup). [RackStep full app template example](github.com/marciofrayze/rackstep-app-template](https://github.com/marciofrayze/rackstep-app-template) is pre-configured to use [puma](https://github.com/puma/puma) in production.
 
 
 ## Running tests
@@ -104,4 +104,4 @@ Open coverage/index.html to see the results.
 
 ## Author
 
-RackStep is maintained by Marcio Frayze David - mfdavid@gmail.com.
+RackStep is maintained by Marcio Frayze David - marcio@segunda.tech.
