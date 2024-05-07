@@ -4,7 +4,7 @@ require 'base64'
 require 'test_helper'
 require 'minitest_contains_assertion'
 
-class RackStepTest < MiniTest::Test
+class RackStepTest < Minitest::Test
 
   # Including rack test methods to allow use of assert_*.
   include Rack::Test::Methods
