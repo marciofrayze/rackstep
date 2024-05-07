@@ -16,7 +16,7 @@ Main goals are:
 [![Coverage](https://codeclimate.com/github/marciofrayze/rackstep/badges/coverage.svg)](https://codeclimate.com/github/marciofrayze/rackstep)
 [![Ich CI](http://inch-ci.org/github/marciofrayze/rackstep.png)](http://inch-ci.org/github/marciofrayze/rackstep)
 [![Gem Version](https://badge.fury.io/rb/rackstep.svg)](https://badge.fury.io/rb/rackstep)
-[![Downloads](http://ruby-gem-downloads-badge.herokuapp.com/rackstep?type=total&color=brightgreen)](https://rubygems.org/gems/rackstep)
+[![Gem Downloads](https://img.shields.io/gem/dt/rackstep)](https://rubygems.org/gems/rackstep)
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://github.com/marciofrayze/rackstep/blob/master/LICENSE)
 
