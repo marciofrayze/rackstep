@@ -89,7 +89,7 @@ Go into the directory you cloned the project and install the dependancies by run
 bundle install
 ```
 
-Start the application server using any [rack](https://github.com/rack/rack)-compatible server. For development we recommend using [shotgun](https://github.com/rtomayko/shotgun) or [rackup](https://github.com/rack/rackup). [RackStep full app template example](github.com/marciofrayze/rackstep-app-template](https://github.com/marciofrayze/rackstep-app-template) is pre-configured to use [puma](https://github.com/puma/puma) in production.
+Start the application server using any [rack](https://github.com/rack/rack)-compatible server. For development we recommend using [shotgun](https://github.com/rtomayko/shotgun) or [rackup](https://github.com/rack/rackup). [RackStep full app template example](github.com/marciofrayze/rackstep-app-template) is pre-configured to use [puma](https://github.com/puma/puma) in production.
 
 
 ## Running tests
@@ -99,7 +99,7 @@ In the main folder of the project, execute:
 rake test
 ```
 
-Open coverage/index.html to see the results.
+Open `coverage/index.html` to see the results.
 
 
 ## Author
