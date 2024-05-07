@@ -18,14 +18,14 @@ module RackStep
 
     # Helpers
     def content_type
-      header['Content-Type']
+      headers['Content-Type']
     end
     def content_type=(value)
-      header['Content-Type'] = value
+      headers['Content-Type'] = value
     end
     def redirect_to(address)
       @status = 302
-      header['Location'] = address
+      headers['Location'] = address
     end
 
   end
