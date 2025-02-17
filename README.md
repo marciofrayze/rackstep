@@ -69,7 +69,7 @@ Rack itself, but there are a few recommended gems:
 
 ## How to use RackStep
 
-Make sure you have ruby 3.3.1 installed (ruby --version). If you don't, we recommend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it. RackStep may work with older ruby implementations but we always develop and test with the latest Ruby MRI stable version.
+Make sure you have ruby 3.4.2 installed (ruby --version). If you don't, we recommend you to use [rbenv](https://github.com/sstephenson/rbenv#installation) to install it. RackStep may work with older ruby implementations but we always develop and test with the latest Ruby MRI stable version.
 
 Install the bundle gem if you don't have it already: 
 ```
