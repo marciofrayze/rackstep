@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name                  = 'rackstep'
-  s.version               = '0.5.0'
+  s.version               = '0.5.1'
   s.date                  = '2025-03-25'
   s.summary               = 'RackStep micro web framework'
   s.description           = 'RackStep is (yet another) micro ruby framework for web development.'
